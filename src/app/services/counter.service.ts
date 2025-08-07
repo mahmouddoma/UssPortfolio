@@ -17,7 +17,11 @@ export interface CounterItem {
 }
 
 @Injectable({
+<<<<<<< HEAD
   providedIn: 'root',
+=======
+  providedIn: 'root'
+>>>>>>> 598c0d471af26a8c74291e17bd0d879dc229dcb2
 })
 export class CounterService {
   private readonly DEFAULT_ANIMATION_DURATION = 2000;
@@ -28,6 +32,7 @@ export class CounterService {
   getCounters(): CounterItem[] {
     return [
       {
+<<<<<<< HEAD
         label: 'العقارات المُباعة',
         target: 120,
         icon: 'fa-solid fa-building-circle-check',
@@ -45,13 +50,38 @@ export class CounterService {
         label: 'العملاء الراضون',
         target: 500,
         icon: 'fa-solid fa-user-check',
+=======
+        label: 'طلابنا السعداء',
+        target: 1000,
+        icon: 'fa-solid fa-users',
+>>>>>>> 598c0d471af26a8c74291e17bd0d879dc229dcb2
         count: 0,
         duration: 2000,
       },
       {
+<<<<<<< HEAD
         label: 'المشاريع العقارية',
         target: 18,
         icon: 'fa-solid fa-city',
+=======
+        label: 'الجوائز المحققة',
+        target: 500,
+        icon: 'fa-solid fa-trophy',
+        count: 0,
+        duration: 1500,
+      },
+      {
+        label: 'الشركات التي تثق بنا',
+        target: 7,
+        icon: 'fa-solid fa-building',
+        count: 0,
+        duration: 1800,
+      },
+      {
+        label: 'الدول التي وصلنا إليها',
+        target: 23,
+        icon: 'fa-solid fa-globe',
+>>>>>>> 598c0d471af26a8c74291e17bd0d879dc229dcb2
         count: 0,
         duration: 1200,
       },
@@ -85,4 +115,8 @@ export class CounterService {
   formatNumber(value: number, locale: string = 'ar-EG'): string {
     return new Intl.NumberFormat(locale).format(value);
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 598c0d471af26a8c74291e17bd0d879dc229dcb2

@@ -4,6 +4,7 @@ import { FeatureComponent } from './components/feature/feature.component';
 import { OurServicesComponent } from './components/our-services/our-services.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { PackagesComponent } from './components/packages/packages.component';
+<<<<<<< HEAD
 import { VisionComponent } from './components/about-us/vision.component';
 import { MissionComponent } from './components/about-us/mission.component';
 import { TeamComponent } from './components/about-us/team.component';
@@ -19,10 +20,16 @@ export const routes: Routes = [
   { path: 'vision', component: VisionComponent },
   { path: 'mission', component: MissionComponent },
   { path: 'team', component: TeamComponent },
+=======
+
+export const routes: Routes = [
+  { path: 'about', component: AboutUsComponent },
+>>>>>>> 598c0d471af26a8c74291e17bd0d879dc229dcb2
   { path: 'features', component: FeatureComponent },
   { path: 'our-services', component: OurServicesComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'packages', component: PackagesComponent },
+<<<<<<< HEAD
   {
     path: 'auctions',
     loadComponent: () =>
@@ -65,4 +72,6 @@ export const routes: Routes = [
         (m) => m.MarketingComponent
       ),
   },
+=======
+>>>>>>> 598c0d471af26a8c74291e17bd0d879dc229dcb2
 ];
