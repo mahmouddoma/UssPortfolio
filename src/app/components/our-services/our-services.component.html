@@ -1,0 +1,45 @@
+<h2>{{ currentLang == 'ar' ? "قائمة دوراتنا" : "Our Courses List" }}</h2>
+<h3 class="title">{{ currentLang == 'ar' ? "الدورات الشائعة" : "Popular Courses" }}</h3>
+
+<!-- عرض الرسالة إذا لم تكن هناك دورات -->
+<div *ngIf="services.length === 0" class="no-courses-card">
+  <div class="no-courses-content">
+    <!-- <img src="assets/images/coming-soon.svg" alt="Coming Soon" class="no-courses-image" /> -->
+    <h3>🎉 {{ currentLang == 'ar' ? "لا توجد دورات متاحة حالياً" : "No Courses Available Yet" }}</h3>
+    <p>
+      {{ currentLang == 'ar'
+        ? "هذه الميزة سيتم تفعيلها قريبًا إن شاء الله. تابعنا للمزيد."
+        : "This feature will be available soon, Insha'Allah. Stay tuned for updates." }}
+    </p>
+  </div>
+</div>
+
+<!-- ✅ عرض الدورات إذا وُجدت -->
+<div *ngIf="services.length > 0" class="row">
+  <div *ngFor="let service of services; let i = index" class="col-md-6 service-details" data-animate>
+    <h3 class="course-name">
+      {{ currentLang == 'ar' ? service.courseNameAr : service.courseNameEn }}
+    </h3>
+
+    <p class="lessons-hours">
+      {{ currentLang == 'ar' ? "الدروس:" : "Lessons:" }} {{ service.lessons }} |
+      {{ currentLang == 'ar' ? "الساعات:" : "Hours:" }} {{ service.hours }}
+    </p>
+
+    <p class="instructor">
+      {{ currentLang == 'ar' ? "المدرب:" : "Instructor:" }}
+      {{ currentLang == 'ar' ? service.instructorAr : service.instructorEn }}
+    </p>
+
+    <div class="instructors-arabic">
+      {{ currentLang == 'ar' ? "المدرسين:" : "Instructors:" }}
+      <ul>
+        <li *ngFor="let instructor of (currentLang == 'ar' ? service.instructorsAr : service.instructorsEn)">
+          {{ instructor }}
+        </li>
+      </ul>
+    </div>
+
+    <img [src]="service.image" alt="Course image" class="course-image" />
+  </div>
+</div>

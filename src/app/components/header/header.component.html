@@ -1,0 +1,182 @@
+<nav
+  class="navbar navbar-expand-lg custom-navbar"
+  [ngClass]="{ scrolled: isScrolled }"
+>
+  <div class="container-fluid">
+    <!-- Logo for small screens -->
+    <a class="navbar-brand d-lg-none" href="#">
+      <img
+        src="https://pbs.twimg.com/profile_images/1756714052372357121/jItqW0yk_400x400.jpg"
+        alt="شعار أسس الريادة"
+        width="40"
+        height="40"
+        class="img-navbar"
+        loading="lazy"
+      />
+    </a>
+
+    <!-- Hamburger button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navigation Links -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <li
+          class="nav-item dropdown custom-dropdown"
+          (mouseenter)="toggleDropdown('about', true)"
+          (mouseleave)="toggleDropdown('about', false)"
+        >
+          <a
+            class="nav-link dropdown-toggle"
+            href="javascript:void(0)"
+            id="aboutDropdown"
+            href="#about"
+            role="button"
+          >
+            {{ currentLang === "ar" ? "من نحن" : "About Us" }}
+          </a>
+          <ul
+            class="dropdown-menu show-on-hover"
+            [class.show]="dropdowns.about"
+            aria-labelledby="aboutDropdown"
+          >
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/vision"
+                routerLinkActive="active"
+                (click)="dropdowns.about = false"
+                >رؤيتنا</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/mission"
+                routerLinkActive="active"
+                (click)="dropdowns.about = false"
+                >رسالتنا</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/team"
+                routerLinkActive="active"
+                (click)="dropdowns.about = false"
+                >فريق العمل</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li
+          class="nav-item dropdown custom-dropdown"
+          (mouseenter)="toggleDropdown('services', true)"
+          (mouseleave)="toggleDropdown('services', false)"
+        >
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="servicesDropdown"
+            role="button"
+          >
+            {{ currentLang === "ar" ? "خدماتنا" : "Our Services" }}
+          </a>
+          <ul
+            class="dropdown-menu show-on-hover"
+            [class.show]="dropdowns.services"
+            aria-labelledby="servicesDropdown"
+          >
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/auctions"
+                (click)="dropdowns.services = false"
+                >المزادات</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/development"
+                (click)="dropdowns.services = false"
+                >التطوير العقاري</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item disabled"
+                routerLink="/brokerage"
+                (click)="dropdowns.services = false"
+                >الوساطة العقارية</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/management"
+                (click)="dropdowns.services = false"
+                >إدارة الأملاك</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/leasing"
+                (click)="dropdowns.services = false"
+                >التمليك والتأجير</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/marketing"
+                (click)="dropdowns.services = false"
+                >التسويق العقاري</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#features">
+            {{ currentLang == "ar" ? "الميزات" : "Features" }}
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">
+            {{ currentLang == "ar" ? "اتصل بنا" : "Contact Us" }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" (click)="toggleLanguage()">
+            🌐 {{ currentLang === "ar" ? "English" : "العربية" }}
+          </button>
+        </li>
+      </ul>
+
+      <!-- Logo for large screens -->
+      <a class="navbar-brand d-none d-lg-block mx-3" href="#">
+        <img
+          src="https://pbs.twimg.com/profile_images/1756714052372357121/jItqW0yk_400x400.jpg"
+          alt="شعار أسس الريادة"
+          width="50"
+          height="50"
+          class="img-navbar"
+          loading="lazy"
+        />
+      </a>
+    </div>
+  </div>
+</nav>

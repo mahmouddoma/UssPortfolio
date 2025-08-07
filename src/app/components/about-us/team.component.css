@@ -1,0 +1,113 @@
+.team-content {
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e3f0ff 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  max-width: 700px;
+  margin: 4rem auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: 50px;
+}
+
+.team-content::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  background: rgba(44, 62, 80, 0.07);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.team-content h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  z-index: 1;
+  position: relative;
+}
+
+.team-content p {
+  font-size: 1.2rem;
+  color: #444;
+  line-height: 2;
+  margin-bottom: 0;
+  z-index: 1;
+  position: relative;
+}
+
+.team-content hr {
+  border: none;
+  border-top: 2px solid #e3f0ff;
+  margin: 2rem 0;
+  width: 60%;
+  z-index: 1;
+  position: relative;
+}
+
+.btn-success {
+  background-color: #218c5b;
+  border: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.btn-success:hover {
+  background-color: #176b43;
+}
+
+.btn-light.shadow {
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.12);
+}
+
+.team-img-wrapper {
+  position: relative;
+  width: 260px;
+  height: 260px;
+}
+
+.team-img-bg {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 260px;
+  height: 260px;
+  background: #e3a34d;
+  border-radius: 20px;
+  z-index: 0;
+}
+
+.team-img-content {
+  position: relative;
+  z-index: 1;
+}
+
+.team-img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+}
+
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+}
+
+.team-ar {
+  font-size: 1.15rem;
+  color: #222;
+}
+
+.team-en {
+  color: #2c3e50;
+  font-style: italic;
+}
