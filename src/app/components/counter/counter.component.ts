@@ -50,14 +50,16 @@ export class CounterComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private setupIntersectionObserver(): void {
     if ('IntersectionObserver' in window) {
-      this.observer = this.counterService.createIntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            this.startSingleCounter(index);
-            this.observer?.unobserve(entry.target);
-          }
-        });
-      });
+      this.observer = this.counterService.createIntersectionObserver(
+        (entries) => {
+          entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+              this.startSingleCounter(index);
+              this.observer?.unobserve(entry.target);
+            }
+          });
+        }
+      );
     }
   }
 

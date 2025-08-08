@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {
   Component,
   AfterViewInit,
@@ -8,31 +7,15 @@ import {
   QueryList,
   ViewChildren,
 } from '@angular/core';
-import { SliderComponent } from '../slider/slider.component';
 import { CommonModule } from '@angular/common';
 import { interval, Subscription } from 'rxjs';
 import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: 'app-about-us',
-  imports: [CommonModule, SliderComponent],
+  imports: [CommonModule],
   templateUrl: './about-us.component.html',
   styleUrl: './about-us.component.css',
-=======
-import { Component, AfterViewInit,OnDestroy,OnInit,ElementRef,QueryList,ViewChildren} from '@angular/core';
-import { SliderComponent } from "../slider/slider.component";
-import { CommonModule } from '@angular/common';
-import { interval, Subscription } from 'rxjs';
-import { ContactService } from '../../services/contact.service';
- 
- 
-
-@Component({
-  selector: 'app-about-us',
-  imports: [CommonModule, SliderComponent  ],
-  templateUrl: './about-us.component.html',
-  styleUrl: './about-us.component.css'
->>>>>>> 598c0d471af26a8c74291e17bd0d879dc229dcb2
 })
 export class AboutUsComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChildren('slide') slideElements!: QueryList<ElementRef>;
@@ -50,11 +33,7 @@ export class AboutUsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   sectionTitle = {
     ar: 'شركة أسس الريادة للخدمات العقارية',
-<<<<<<< HEAD
     en: 'Osos Al-Riyada Real Estate Services',
-=======
-    en: 'Osos Al-Riyada Real Estate Services'
->>>>>>> 598c0d471af26a8c74291e17bd0d879dc229dcb2
   };
 
   description = {
@@ -65,22 +44,13 @@ export class AboutUsComponent implements OnInit, OnDestroy, AfterViewInit {
 نؤمن في "أسس الريادة" بأن الثقة والمصداقية هما حجر الأساس لأي علاقة ناجحة، لذا نحرص على بناء شراكات طويلة الأمد مع عملائنا مبنية على الجودة والالتزام والنتائج الملموسة.
 
 رؤيتنا أن نكون الخيار الأول في عالم العقار، ورسالتنا هي تمكين الأفراد والشركات من اتخاذ قرارات عقارية ذكية وآمنة من خلال خبرتنا العميقة وفريقنا المتخصص.`,
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 598c0d471af26a8c74291e17bd0d879dc229dcb2
     en: `Osos Al-Riyada is a leading real estate services company in the Kingdom of Saudi Arabia, committed to delivering integrated and innovative solutions that meet client needs and align with the modern real estate market.
 
 We provide a wide range of services, including real estate marketing, property management, real estate brokerage, development, and auctions — all delivered with the highest standards of professionalism and transparency.
 
 At Osos Al-Riyada, we believe that trust and credibility are the foundation of successful relationships. That’s why we focus on long-term partnerships built on quality, commitment, and tangible results.
 
-<<<<<<< HEAD
 Our vision is to be the first choice in the real estate world, and our mission is to empower individuals and businesses to make smart and secure property decisions through our deep expertise and specialized team.`,
-=======
-Our vision is to be the first choice in the real estate world, and our mission is to empower individuals and businesses to make smart and secure property decisions through our deep expertise and specialized team.`
->>>>>>> 598c0d471af26a8c74291e17bd0d879dc229dcb2
   };
 
   currentLang: string = 'ar';
@@ -132,8 +102,4 @@ Our vision is to be the first choice in the real estate world, and our mission i
       dot.nativeElement.classList.toggle('active', i === this.currentSlide)
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 598c0d471af26a8c74291e17bd0d879dc229dcb2

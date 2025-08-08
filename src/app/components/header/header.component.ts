@@ -1,5 +1,4 @@
 import { Component, HostListener } from '@angular/core';
-<<<<<<< HEAD
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ContactService } from '../../services/contact.service';
@@ -22,38 +21,11 @@ export class HeaderComponent {
   dropdowns = {
     services: false,
     about: false,
-=======
-import { Router, RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { ContactService } from '../../services/contact.service';
-
-
-@Component({
-  selector: 'app-header',
-  imports: [CommonModule],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
-})
-export class HeaderComponent {
-  constructor(private router: Router,public contactService :ContactService) { 
-  }
- currentLang:any
- toggleLanguage() {
-    this.contactService.toggleLanguage();
- this.currentLang = this.contactService.currentLang
-  }
-  isScrolled = false;
-    
-  dropdowns = {
-    services: false,
-    about: false
->>>>>>> 598c0d471af26a8c74291e17bd0d879dc229dcb2
   };
 
   ngOnInit(): void {
     // Set default language to Arabic
     // this.contactService.SetLanguage();
-<<<<<<< HEAD
     this.currentLang = (localStorage.getItem('lang') as 'ar' | 'en') || 'ar';
   }
   @HostListener('window:scroll', [])
@@ -89,36 +61,4 @@ export class HeaderComponent {
     this.router.navigate([path]);
     this.dropdowns[dropdown] = false;
   }
-=======
-    this.currentLang = localStorage.getItem('lang') as 'ar' | 'en' || 'ar';
-  }
- @HostListener('window:scroll', [])
-onWindowScroll() {
-  const scrollY = window.scrollY || document.documentElement.scrollTop || 0;
-  const triggerHeight = 100;
-  this.isScrolled = scrollY > triggerHeight;
-}
-
-/**
- * Scroll to a section when clicking a navigation link.
- */
-scrollTo(event: Event) {
-  event.preventDefault();
-  const targetPath = (event.target as HTMLAnchorElement).getAttribute('routerLink');
-  if (targetPath) {
-    const targetElementId = targetPath.replace('/', '');
-    const targetElement = document.getElementById(targetElementId);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      this.router.navigate([], { fragment: targetElementId });
-    }
-  }
-}
-
-
-toggleDropdown(menu: 'services' | 'about', show: boolean) {
-  this.dropdowns[menu] = show;
-}
-
->>>>>>> 598c0d471af26a8c74291e17bd0d879dc229dcb2
 }
