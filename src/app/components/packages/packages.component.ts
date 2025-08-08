@@ -9,7 +9,13 @@ import { HttpClient } from '@angular/common/http';
 import Swiper from 'swiper';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { ContactService } from '../../services/contact.service';
+<<<<<<< HEAD
 Swiper.use([Navigation, Pagination, Autoplay]);
+=======
+
+Swiper.use([Navigation, Pagination, Autoplay]);
+
+>>>>>>> dcb8319 (preview)
 @Component({
   selector: 'app-packages',
   standalone: true,
@@ -18,6 +24,7 @@ Swiper.use([Navigation, Pagination, Autoplay]);
   styleUrl: './packages.component.css',
 })
 export class PackagesComponent implements OnInit, AfterViewInit {
+<<<<<<< HEAD
 
 packages = [
   {
@@ -218,6 +225,9 @@ Ijazahs are granted with proper criteria and digitally archived.`
 ];
 
 
+=======
+  
+>>>>>>> dcb8319 (preview)
   swiper: Swiper | null = null;
 
   constructor(private cdr: ChangeDetectorRef, private http: HttpClient,public contactService :ContactService) {}
@@ -236,10 +246,25 @@ Ijazahs are granted with proper criteria and digitally archived.`
 
   initializeSwiper(): void {
   setTimeout(() => {
+<<<<<<< HEAD
     if (this.swiper) {
       this.swiper.destroy(true, true);
     }
 
+=======
+    this.destroySwiper();
+    this.createSwiper();
+  }, 100);
+}
+
+  private destroySwiper(): void {
+    if (this.swiper) {
+      this.swiper.destroy(true, true);
+    }
+  }
+
+  private createSwiper(): void {
+>>>>>>> dcb8319 (preview)
     this.swiper = new Swiper('.swiper-container', {
       slidesPerView: 1,
       spaceBetween: 20,
@@ -268,6 +293,7 @@ Ijazahs are granted with proper criteria and digitally archived.`
         1024: { slidesPerView: 3 }
       }
     });
+<<<<<<< HEAD
   }, 100);
 }
 
@@ -300,3 +326,66 @@ Ijazahs are granted with proper criteria and digitally archived.`
     return htmlLines.join('');
   }
 }
+=======
+  }
+
+   
+
+  // Added 'status' property to the auction objects to resolve the error
+auctions: Array<{
+  image: string;
+  titleAr: string;
+  titleEn: string;
+  contentAr: string;
+  contentEn: string;
+  status: 'current' | 'upcoming' | 'ended';
+}> = [
+  {
+    image: 'assets/images/auction1.jpg',
+    titleAr: 'مزاد العقارات الفاخرة',
+    titleEn: 'Luxury Real Estate Auction',
+    contentAr: 'شارك في مزادنا للحصول على أفضل العقارات الفاخرة بأسعار تنافسية.',
+    contentEn: 'Join our auction to get the best luxury properties at competitive prices.',
+    status: 'current'
+  },
+  {
+    image: 'assets/images/auction2.jpg',
+    titleAr: 'مزاد السيارات الكلاسيكية',
+    titleEn: 'Classic Cars Auction',
+    contentAr: 'فرصة لاقتناء سيارات كلاسيكية نادرة في مزادنا القادم.',
+    contentEn: 'A chance to own rare classic cars in our upcoming auction.',
+    status: 'upcoming'
+  },
+  {
+    image: 'assets/images/auction3.jpg',
+    titleAr: 'مزاد التحف الفنية',
+    titleEn: 'Art Collectibles Auction',
+    contentAr: 'اكتشف تحفًا فنية فريدة في مزادنا الحصري.',
+    contentEn: 'Discover unique art collectibles in our exclusive auction.',
+    status: 'ended'
+  }
+];
+   selectedTab: string = 'all';
+
+currentAuctions: Array<any> = [];
+upcomingAuctions: Array<any> = [];
+endedAuctions: Array<any> = [];
+
+selectTab(tab: string): void {
+  this.selectedTab = tab;
+
+  // Filter auctions based on the selected tab
+  if (tab === 'all') {
+    this.currentAuctions = this.auctions;
+    this.upcomingAuctions = this.auctions;
+    this.endedAuctions = this.auctions;
+  } else if (tab === 'current') {
+    this.currentAuctions = this.auctions.filter(auction => auction.status === 'current');
+  } else if (tab === 'upcoming') {
+    this.upcomingAuctions = this.auctions.filter(auction => auction.status === 'upcoming');
+  } else if (tab === 'ended') {
+    this.endedAuctions = this.auctions.filter(auction => auction.status === 'ended');
+  }
+}
+}
+>>>>>>> dcb8319 (preview)
