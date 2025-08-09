@@ -12,6 +12,7 @@ interface Service {
   descriptionAr: string;
   descriptionEn: string;
   image: string;
+  icon: string;
 }
 
 @Component({
@@ -29,57 +30,33 @@ export class OurServicesComponent {
     {
       serviceNameAr: 'الوساطة العقارية',
       serviceNameEn: 'Real Estate Brokerage',
-<<<<<<< HEAD
-      icon: 'assets/icons/brokerage.svg',
-=======
-      icon: 'https://imageio.forbes.com/specials-images/dam/imageserve/1011612238/960x0.jpg?height=474&width=711&fit=bounds',
->>>>>>> 9b5754279316b25c03fd5556e8e910a1d2b02873
-    },
+        icon: 'https://imageio.forbes.com/specials-images/dam/imageserve/1011612238/960x0.jpg?height=474&width=711&fit=bounds',
+     },
     {
       serviceNameAr: 'التسويق العقاري',
       serviceNameEn: 'Real Estate Marketing',
-<<<<<<< HEAD
-      icon: 'assets/icons/marketing.svg',
-=======
-      icon: 'https://imageio.forbes.com/specials-images/dam/imageserve/1011612238/960x0.jpg?height=474&width=711&fit=bounds',
->>>>>>> 9b5754279316b25c03fd5556e8e910a1d2b02873
-    },
+        icon: 'https://imageio.forbes.com/specials-images/dam/imageserve/1011612238/960x0.jpg?height=474&width=711&fit=bounds',
+     },
     {
       serviceNameAr: 'التطوير العقاري',
       serviceNameEn: 'Real Estate Development',
-<<<<<<< HEAD
-      icon: 'assets/icons/development.svg',
-=======
-      icon: 'https://imageio.forbes.com/specials-images/dam/imageserve/1011612238/960x0.jpg?height=474&width=711&fit=bounds',
->>>>>>> 9b5754279316b25c03fd5556e8e910a1d2b02873
-    },
+        icon: 'https://imageio.forbes.com/specials-images/dam/imageserve/1011612238/960x0.jpg?height=474&width=711&fit=bounds',
+     },
     {
       serviceNameAr: 'التمليك والتأجير',
       serviceNameEn: 'Ownership & Leasing',
-<<<<<<< HEAD
-      icon: 'assets/icons/leasing.svg',
-=======
-      icon: 'https://imageio.forbes.com/specials-images/dam/imageserve/1011612238/960x0.jpg?height=474&width=711&fit=bounds',
->>>>>>> 9b5754279316b25c03fd5556e8e910a1d2b02873
-    },
+        icon: 'https://imageio.forbes.com/specials-images/dam/imageserve/1011612238/960x0.jpg?height=474&width=711&fit=bounds',
+     },
     {
       serviceNameAr: 'إدارة الأملاك',
       serviceNameEn: 'Property Management',
-<<<<<<< HEAD
-      icon: 'assets/icons/management.svg',
-=======
-      icon: 'https://imageio.forbes.com/specials-images/dam/imageserve/1011612238/960x0.jpg?height=474&width=711&fit=bounds',
->>>>>>> 9b5754279316b25c03fd5556e8e910a1d2b02873
-    },
+        icon: 'https://imageio.forbes.com/specials-images/dam/imageserve/1011612238/960x0.jpg?height=474&width=711&fit=bounds',
+     },
     {
       serviceNameAr: 'المزادات العقارية',
       serviceNameEn: 'Real Estate Auctions',
-<<<<<<< HEAD
-      icon: 'assets/icons/auction.svg',
-=======
-      icon: 'https://imageio.forbes.com/specials-images/dam/imageserve/1011612238/960x0.jpg?height=474&width=711&fit=bounds',
->>>>>>> 9b5754279316b25c03fd5556e8e910a1d2b02873
-    },
+        icon: 'https://imageio.forbes.com/specials-images/dam/imageserve/1011612238/960x0.jpg?height=474&width=711&fit=bounds',
+     },
   ];
   ngAfterViewInit() {
     const swiperEl = document.querySelector('.mySwiper') as any;
