@@ -4,9 +4,9 @@ import { FeatureComponent } from './components/feature/feature.component';
 import { OurServicesComponent } from './components/our-services/our-services.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { PackagesComponent } from './components/packages/packages.component';
-import { VisionComponent } from './components/about-us/vision.component';
-import { MissionComponent } from './components/about-us/mission.component';
-import { TeamComponent } from './components/about-us/team.component';
+import { VisionComponent } from './components/about-us/vision-component/vision.component';
+import { MissionComponent } from './components/about-us/mission-component/mission.component';
+import { TeamComponent } from './components/about-us/teams/team.component';
 
 export const routes: Routes = [
   { path: 'about', component: AboutUsComponent },
