@@ -8,29 +8,82 @@ import {
 import { HttpClient } from '@angular/common/http';
 import Swiper from 'swiper';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { ContactService } from '../../services/contact.service';
+import { ContactService } from '../../services/contact.service';import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 Swiper.use([Navigation, Pagination, Autoplay]);
+
+interface Auction {
+  image: string;
+  titleAr: string;
+  titleEn: string;
+  contentAr: string;
+  contentEn: string;
+  status: 'current' | 'upcoming' | 'ended';
+}
 
 @Component({
   selector: 'app-packages',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './packages.component.html',
-  styleUrl: './packages.component.css',
+  styleUrls: ['./packages.component.css'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PackagesComponent implements OnInit, AfterViewInit {
   swiper: Swiper | null = null;
   currentLang: string = 'ar';
 
-  auctions: Array<{
-    image: string;
-    titleAr: string;
-    titleEn: string;
-    contentAr: string;
-    contentEn: string;
-    status: 'current' | 'upcoming' | 'ended';
-  }> = [
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private http: HttpClient,
+    public contactService: ContactService
+  ) {}
+
+  ngOnInit(): void {
+    const savedLang = localStorage.getItem('lang');
+    this.currentLang = savedLang === 'en' ? 'en' : 'ar';
+  }
+
+  ngAfterViewInit(): void {
+    this.initializeSwiper();
+  }
+
+  private initializeSwiper(): void {
+    setTimeout(() => {
+      this.destroySwiper();
+      this.createSwiper();
+    }, 100);
+  }
+
+  private destroySwiper(): void {
+    if (this.swiper) {
+      this.swiper.destroy(true, true);
+    }
+  }
+
+  private createSwiper(): void {
+    this.swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      centeredSlides: false,
+      loop: false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      breakpoints: {
+        640: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      }
+    });
+  }
+
+  auctions = [
     {
       image: 'assets/images/auction1.jpg',
       titleAr: 'مزاد العقارات الفاخرة',
@@ -57,79 +110,29 @@ export class PackagesComponent implements OnInit, AfterViewInit {
     }
   ];
 
-  selectedTab: string = 'all';
-  currentAuctions: Array<any> = [];
-  upcomingAuctions: Array<any> = [];
-  endedAuctions: Array<any> = [];
+  selectedTab: 'all' | 'current' | 'upcoming' | 'ended' = 'all';
 
-  constructor(
-    private cdr: ChangeDetectorRef,
-    private http: HttpClient,
-    public contactService: ContactService
-  ) {}
+get currentAuctions() {
+  return this.auctions.filter(a => a.status === 'current');
+}
 
-  ngOnInit(): void {
-    this.currentLang = localStorage.getItem('lang') === 'en' ? 'en' : 'ar';
+get upcomingAuctions() {
+  return this.auctions.filter(a => a.status === 'upcoming');
+}
+
+get endedAuctions() {
+  return this.auctions.filter(a => a.status === 'ended');
+}
+
+
+  get filteredAuctions() {
+    if (this.selectedTab === 'all') return this.auctions;
+    return this.auctions.filter(a => a.status === this.selectedTab);
   }
 
-  ngAfterViewInit(): void {
-    this.initializeSwiper();
-  }
-
-  initializeSwiper(): void {
-    setTimeout(() => {
-      this.destroySwiper();
-      this.createSwiper();
-    }, 100);
-  }
-
-  private destroySwiper(): void {
-    if (this.swiper) {
-      this.swiper.destroy(true, true);
-    }
-  }
-
-  private createSwiper(): void {
-    this.swiper = new Swiper('.swiper-container', {
-      slidesPerView: 1,
-      spaceBetween: 20,
-      centeredSlides: false,
-      loop: false,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        640: { slidesPerView: 1 },
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-      },
-    });
-  }
-
-  selectTab(tab: string): void {
+  selectTab(tab: 'all' | 'current' | 'upcoming' | 'ended'): void {
     this.selectedTab = tab;
-
-    if (tab === 'all') {
-      this.currentAuctions = this.auctions;
-      this.upcomingAuctions = this.auctions;
-      this.endedAuctions = this.auctions;
-    } else if (tab === 'current') {
-      this.currentAuctions = this.auctions.filter(
-        (auction) => auction.status === 'current'
-      );
-    } else if (tab === 'upcoming') {
-      this.upcomingAuctions = this.auctions.filter(
-        (auction) => auction.status === 'upcoming'
-      );
-    } else if (tab === 'ended') {
-      this.endedAuctions = this.auctions.filter(
-        (auction) => auction.status === 'ended'
-      );
-    }
+    this.cdr.detectChanges();  
+    this.initializeSwiper();
   }
 }
