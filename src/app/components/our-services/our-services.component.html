@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h2>
   {{ currentLang == "ar" ? "خدماتنا العقارية" : "Our Real Estate Services" }}
 </h2>
@@ -9,6 +10,20 @@
 <div *ngIf="services.length === 0" class="no-services-card">
   <div class="no-services-content">
     <h3>
+=======
+<!-- Refactored to use Bootstrap classes for layout and styling -->
+<h2 class="text-center my-4">
+  {{ currentLang == "ar" ? "خدماتنا العقارية" : "Our Real Estate Services" }}
+</h2>
+<h3 class="text-center mb-5">
+  {{ currentLang == "ar" ? "الخدمات الشائعة" : "Popular Services" }}
+</h3>
+
+<!-- Display message if no services are available -->
+<div *ngIf="services.length === 0" class="card text-center mx-auto p-4" style="max-width: 600px;">
+  <div class="card-body">
+    <h3 class="card-title">
+>>>>>>> 9b5754279316b25c03fd5556e8e910a1d2b02873
       🎉
       {{
       currentLang == "ar"
@@ -26,6 +41,7 @@
   </div>
 </div>
 
+<<<<<<< HEAD
 <!-- ✅ عرض الخدمات إذا وُجدت -->
 <div *ngIf="services.length > 0" class="row" style="
     display: flex;
@@ -96,5 +112,30 @@
         </div>
       </swiper-slide>
     </swiper-container>
+=======
+<div *ngIf="services.length > 0" class="container">
+  <div class="row">
+    <div class="col-12">
+      <swiper-container class="mySwiper" [spaceBetween]="10" [autoplay]="{ delay: 3000, disableOnInteraction: false }"
+        [loop]="true" [pagination]="{ clickable: true }" [navigation]="true" [breakpoints]="{
+          '0': { slidesPerView: 1 },
+          '768': { slidesPerView: 2 },
+          '1024': { slidesPerView: 3 }
+        }">
+        <swiper-slide *ngFor="let service of services">
+          <div class="service-card">
+            <img [src]="service.icon" alt="{{ service.serviceNameAr }}" class="img-fluid p-3 w-50 rounded-4" />
+            <h5 class="text-white mt-3">
+              {{
+              currentLang == "ar"
+              ? service.serviceNameAr
+              : service.serviceNameEn
+              }}
+            </h5>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+>>>>>>> 9b5754279316b25c03fd5556e8e910a1d2b02873
   </div>
 </div>
