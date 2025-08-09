@@ -1,36 +1,4 @@
 <h2 class="section-title text-center">
-<<<<<<< HEAD
-  {{ currentLang === 'ar' ? 'الأقسام' : 'Sections' }}
-</h2>
-
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div
-      class="swiper-slide"
-      *ngFor="let package of packages"
-    >
-      <div
-        class="package-card animate"
-        [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'"
-      >
-        <h3 class="package-title">
-          {{ currentLang === 'ar' ? package.titleAr : package.titleEn }}
-        </h3>
-        <p class="package-content">
-          {{ currentLang === 'ar' ? package.contentAr : package.contentEn }}
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navigation buttons (optional) -->
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
-
-  <!-- Pagination dots -->
-  <div class="swiper-pagination"></div>
-</div>
-=======
   {{ currentLang === 'ar' ? 'المزادات' : 'Auctions' }}
 </h2>
 
@@ -85,4 +53,3 @@
     </div>
   </div>
 </div>
->>>>>>> dcb8319 (preview)
