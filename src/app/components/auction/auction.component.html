@@ -1,56 +1,83 @@
-<h2 class="section-title text-center">
-  {{ currentLang === 'ar' ? 'المزادات' : 'Auctions' }}
-</h2>
+<div class="auctions-section">
+  <h2 class="section-title text-center">
+    {{ currentLang === 'ar' ? 'المزادات' : 'Auctions' }}
+  </h2>
 
-<div class="e-n-tabs">
-  <!-- التبويبات -->
-  <div class="e-n-tabs-heading" role="tablist">
-    <button class="e-n-tab-title" [class.active]="selectedTab === 'all'" (click)="selectTab('all')">
-      {{ currentLang === 'ar' ? 'الكل' : 'All' }}
-    </button>
-    <button class="e-n-tab-title" [class.active]="selectedTab === 'current'" (click)="selectTab('current')">
-      {{ currentLang === 'ar' ? 'المزادات الجارية' : 'Current Auctions' }}
-    </button>
-    <button class="e-n-tab-title" [class.active]="selectedTab === 'upcoming'" (click)="selectTab('upcoming')">
-      {{ currentLang === 'ar' ? 'المزادات القادمة' : 'Upcoming Auctions' }}
-    </button>
-    <button class="e-n-tab-title" [class.active]="selectedTab === 'ended'" (click)="selectTab('ended')">
-      {{ currentLang === 'ar' ? 'المزادات المنتهية' : 'Ended Auctions' }}
-    </button>
-  </div>
-
-  <!-- المحتوى -->
-  <div *ngFor="let auction of filteredAuctions" class="auction-card">
-    <span class="status" [ngClass]="auction.status">{{ auction.status }}</span>
-
-    <img [src]="auction.imageUrl" alt="{{ currentLang === 'ar' ? auction.titleAr : auction.titleEn }}"
-      class="auction-image" />
-
-    <h3 class="auction-title">{{ currentLang === 'ar' ? auction.titleAr : auction.titleEn }}</h3>
-
-    <div class="auction-info">
-      <div>
-        <label>{{ currentLang === 'ar' ? 'تاريخ البداية' : 'Start Date' }}</label>
-        <span>{{ auction.startDate | date:'mediumDate' }}</span>
-      </div>
-      <div>
-        <label>{{ currentLang === 'ar' ? 'تاريخ النهاية' : 'End Date' }}</label>
-        <span>{{ auction.endDate | date:'mediumDate' }}</span>
-      </div>
-      <div style="grid-column: span 2;">
-        <label>{{ currentLang === 'ar' ? 'الوصف' : 'Description' }}</label>
-        <p>{{ currentLang === 'ar' ? auction.descriptionAr : auction.descriptionEn }}</p>
-      </div>
+  <div class="swiper-tabs-container">
+    <!-- Tab Navigation -->
+    <div class="tabs-navigation" role="tablist">
+      <button class="tab-button" [class.active]="selectedTab === 'all'" (click)="selectTab('all')">
+        {{ currentLang === 'ar' ? 'الكل' : 'All' }}
+      </button>
+      <button class="tab-button" [class.active]="selectedTab === 'current'" (click)="selectTab('current')">
+        {{ currentLang === 'ar' ? 'الجارية' : 'Current' }}
+      </button>
+      <button class="tab-button" [class.active]="selectedTab === 'upcoming'" (click)="selectTab('upcoming')">
+        {{ currentLang === 'ar' ? 'القادمة' : 'Upcoming' }}
+      </button>
+      <button class="tab-button" [class.active]="selectedTab === 'ended'" (click)="selectTab('ended')">
+        {{ currentLang === 'ar' ? 'المنتهية' : 'Ended' }}
+      </button>
     </div>
 
-    <a *ngIf="auction.pdfUrl" [href]="auction.pdfUrl" target="_blank" class="auction-pdf">
-      📄 {{ currentLang === 'ar' ? 'تحميل الكتيب' : 'Download PDF' }}
-    </a>
+    <!-- Swiper Container -->
+    <div class="swiper auction-swiper">
+      <div class="swiper-wrapper">
+        <div *ngFor="let auction of filteredAuctions" class="swiper-slide">
+          <div class="auction-card">
+            <span class="status-badge" [ngClass]="auction.status">
+              {{ currentLang === 'ar' ?
+              (auction.status === 'current' ? 'جارية' :
+              auction.status === 'upcoming' ? 'قادمة' : 'منتهية') :
+              auction.status }}
+            </span>
 
-    <div class="auction-actions" style="margin-top: 12px; display: flex; gap: 10px; justify-content: flex-end;">
-      <button class="btn btn-primary" type="button">{{ currentLang === 'ar' ? 'تعديل' : 'Edit' }}</button>
-      <button class="btn btn-danger" type="button">{{ currentLang === 'ar' ? 'حذف' : 'Delete' }}</button>
+            <img [src]="auction.imageUrl" [alt]="currentLang === 'ar' ? auction.titleAr : auction.titleEn"
+              class="auction-image" />
+
+            <h3 class="auction-title">
+              {{ currentLang === 'ar' ? auction.titleAr : auction.titleEn }}
+            </h3>
+
+            <div class="auction-info">
+              <div class="info-item">
+                <label>{{ currentLang === 'ar' ? 'تاريخ البداية' : 'Start Date' }}</label>
+                <span>{{ auction.startDate | date:'mediumDate' }}</span>
+              </div>
+              <div class="info-item">
+                <label>{{ currentLang === 'ar' ? 'تاريخ النهاية' : 'End Date' }}</label>
+                <span>{{ auction.endDate | date:'mediumDate' }}</span>
+              </div>
+              <div class="info-item full-width">
+                <label>{{ currentLang === 'ar' ? 'الوصف' : 'Description' }}</label>
+                <p>{{ currentLang === 'ar' ? auction.descriptionAr : auction.descriptionEn }}</p>
+              </div>
+            </div>
+
+            <div class="auction-footer">
+              <a *ngIf="auction.pdfUrl" [href]="auction.pdfUrl" target="_blank" class="pdf-link">
+                📄 {{ currentLang === 'ar' ? 'تحميل الكتيب' : 'Download PDF' }}
+              </a>
+
+              <div class="action-buttons">
+                <button class="action-btn edit-btn" type="button">
+                  {{ currentLang === 'ar' ? 'تعديل' : 'Edit' }}
+                </button>
+                <button class="action-btn delete-btn" type="button">
+                  {{ currentLang === 'ar' ? 'حذف' : 'Delete' }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Swiper Pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- Swiper Navigation -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
   </div>
-
 </div>

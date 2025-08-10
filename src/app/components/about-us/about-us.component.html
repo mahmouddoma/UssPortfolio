@@ -5,32 +5,26 @@
     <div class="overlay" data-animate></div>
   </div>
 
-  <div class="container position-relative z-2 px-3 px-md-4" data-animate>
+  <div class="container position-relative z-2 px-3 px-md-4 text-end" data-animate>
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-12" data-animate>
-        <h2 class="fw-bold fs-1 mb-4 mt-5 text-end" data-animate>
+        <h2 class="fw-bold fs-1 mb-4 mt-5">
           {{ currentLang === "ar" ? sectionTitle.ar : sectionTitle.en }}
         </h2>
-<<<<<<< HEAD
-        <p class="lead mb-4 fs-6 fs-md-5 text-end w-75" data-animate>
-=======
-        <p class="lead mb-4 fs-6 fs-md-5" data-animate>
->>>>>>> 478ac57f9a800269efa21c957e05fad926f5eabb
+        <p class="lead mb-4 fs-6 fs-md-5 w-100 mx-auto text-end">
           {{ currentLang === "ar" ? description.ar : description.en }}
         </p>
+        <button class="btn btn-primary" data-animate (click)="scrollToAuctions()">
+          {{ currentLang === "ar" ? 'استكشاف المزادات' : 'Explore Auctions' }}
+        </button>
       </div>
     </div>
   </div>
+
 
   <div class="pagination" data-animate>
     <span *ngFor="let slide of slides; let i = index" class="dot" data-animate [class.active]="currentSlide === i"
       (click)="setCurrentSlide(i)">
     </span>
   </div>
-<<<<<<< HEAD
 </section>
-=======
-</section>
-
-<!-- <app-slider appAppInViewport animationClass="fade-from-bottom"></app-slider> -->
->>>>>>> 478ac57f9a800269efa21c957e05fad926f5eabb

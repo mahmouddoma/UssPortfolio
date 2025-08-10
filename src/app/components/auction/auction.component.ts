@@ -3,7 +3,9 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
   Component,
+  ElementRef,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import Swiper from 'swiper';
@@ -36,11 +38,13 @@ Swiper.use([Navigation, Pagination, Autoplay]);
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PackagesComponent implements OnInit, AfterViewInit {
+  @ViewChild('tabsContent') tabsContent!: ElementRef;
+
   swiper: Swiper | null = null;
-  currentLang: string = 'ar';
+  currentLang: 'ar' | 'en' = 'ar';
   auctions: any[] = [];
-  selectedTab: 'all' | 'current' | 'upcoming' | 'ended' = 'all';
   filteredAuctions: any[] = [];
+  selectedTab: 'all' | 'current' | 'upcoming' | 'ended' = 'all';
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -50,13 +54,28 @@ export class PackagesComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    // Load language from localStorage or default to 'ar'
     const savedLang = localStorage.getItem('lang');
     this.currentLang = savedLang === 'en' ? 'en' : 'ar';
+
+    // Load auctions data
     this.loadAuctions();
   }
 
   ngAfterViewInit(): void {
+    this.handleSingleCardLayout();
     this.initializeSwiper();
+  }
+
+  private handleSingleCardLayout(): void {
+    const container = this.tabsContent.nativeElement as HTMLElement;
+    const cards = container.querySelectorAll('.auction-card');
+
+    if (cards.length === 1) {
+      container.classList.add('single-card');
+    } else {
+      container.classList.remove('single-card');
+    }
   }
 
   private initializeSwiper(): void {
@@ -69,6 +88,7 @@ export class PackagesComponent implements OnInit, AfterViewInit {
   private destroySwiper(): void {
     if (this.swiper) {
       this.swiper.destroy(true, true);
+      this.swiper = null;
     }
   }
 
@@ -76,7 +96,6 @@ export class PackagesComponent implements OnInit, AfterViewInit {
     this.swiper = new Swiper('.swiper-container', {
       slidesPerView: 1,
       spaceBetween: 20,
-      centeredSlides: false,
       loop: false,
       pagination: {
         el: '.swiper-pagination',
@@ -94,32 +113,26 @@ export class PackagesComponent implements OnInit, AfterViewInit {
     });
   }
 
-  // loadAuctions() {
-  //   this.auctionService.getAllAuctions().subscribe({
-  //     next: (res) => {
-  //       this.auctions = res.map((a) => ({
-  //         ...a,
-  //         status: this.getAuctionStatus(a.startDate, a.endDate),
-  //       }));
-  //       this.cdr.detectChanges();
-  //     },
-  //     error: (err) => console.error('Error fetching auctions', err),
-  //   });
-  // }
-  loadAuctions() {
+  loadAuctions(): void {
     this.auctionService.getAllAuctions().subscribe({
-      next: (data) => {
-        this.auctions = data.map((a: any) => ({
+      next: (data: any[]) => {
+        this.auctions = data.map((a) => ({
           ...a,
           status: this.getAuctionStatus(a.startDate, a.endDate),
         }));
         this.applyFilter();
+        this.cdr.detectChanges();
+        this.handleSingleCardLayout();
+        this.initializeSwiper();
       },
       error: (err) => console.error('Error loading auctions', err),
     });
   }
 
-  getAuctionStatus(startDate: string, endDate: string): string {
+  getAuctionStatus(
+    startDate: string,
+    endDate: string
+  ): 'upcoming' | 'current' | 'ended' {
     const now = new Date();
     const start = new Date(startDate);
     const end = new Date(endDate);
@@ -129,14 +142,19 @@ export class PackagesComponent implements OnInit, AfterViewInit {
     return 'ended';
   }
 
-  selectTab(tab: 'all' | 'current' | 'upcoming' | 'ended') {
+  selectTab(tab: 'all' | 'current' | 'upcoming' | 'ended'): void {
     this.selectedTab = tab;
     this.applyFilter();
+    // after filtering, update layout and swiper:
+    setTimeout(() => {
+      this.handleSingleCardLayout();
+      this.initializeSwiper();
+    }, 0);
   }
 
-  applyFilter() {
+  applyFilter(): void {
     if (this.selectedTab === 'all') {
-      this.filteredAuctions = this.auctions;
+      this.filteredAuctions = [...this.auctions];
     } else {
       this.filteredAuctions = this.auctions.filter(
         (a) => a.status === this.selectedTab
@@ -149,8 +167,9 @@ export class PackagesComponent implements OnInit, AfterViewInit {
     const end = new Date(endDate).getTime();
     const diff = end - now;
 
-    if (diff <= 0)
+    if (diff <= 0) {
       return this.currentLang === 'ar' ? 'انتهى المزاد' : 'Auction Ended';
+    }
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);

@@ -55,12 +55,6 @@
 .pagination {
   position: absolute;
   bottom: 20px;
-<<<<<<< HEAD
-
-=======
-  /* left: 50%; */
-  transform: translateX(-50%);
->>>>>>> 478ac57f9a800269efa21c957e05fad926f5eabb
   z-index: 2;
   display: flex;
   gap: 12px;

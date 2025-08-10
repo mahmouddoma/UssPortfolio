@@ -13,7 +13,6 @@
 
     <div class="row justify-content-center" data-animate>
       <div class="col-12 col-md-10 col-lg-8" data-animate>
-<<<<<<< HEAD
         <div *ngIf="submitResult" class="alert" [ngClass]="submitResult.success ? 'alert-success' : 'alert-danger'"
           role="alert" data-animate>
           {{ submitResult.message }}
@@ -21,23 +20,11 @@
 
         <form class="contact-form p-4 bg-white rounded-3 shadow-sm" [formGroup]="contactForm" (ngSubmit)="onSubmit()"
           data-animate>
-=======
-        <div *ngIf="submitResult" class="alert" [ngClass]="submitResult.success ? 'alert-success' : 'alert-danger'" role="alert" data-animate>
-          {{ submitResult.message }}
-        </div>
-
-        <form class="contact-form p-4 bg-white rounded-3 shadow-sm" [formGroup]="contactForm" (ngSubmit)="onSubmit()" data-animate>
->>>>>>> 478ac57f9a800269efa21c957e05fad926f5eabb
           <div class="row g-3">
             <div class="col-12 col-md-6" data-animate>
               <div class="form-group">
                 <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('name')}"
-<<<<<<< HEAD
                   [placeholder]="currentLang === 'ar' ? 'الاسم' : 'Name'" formControlName="name" required />
-=======
-                  [placeholder]="currentLang === 'ar' ? 'الاسم' : 'Name'"
-                  formControlName="name" required />
->>>>>>> 478ac57f9a800269efa21c957e05fad926f5eabb
                 <div *ngIf="hasError('name')" class="invalid-feedback">{{ getErrorMessage('name') }}</div>
               </div>
             </div>
@@ -45,13 +32,8 @@
             <div class="col-12 col-md-6" data-animate>
               <div class="form-group">
                 <input type="email" class="form-control" [ngClass]="{'is-invalid': hasError('email')}"
-<<<<<<< HEAD
                   [placeholder]="currentLang === 'ar' ? 'البريد الإلكتروني' : 'Email Address'" formControlName="email"
                   required />
-=======
-                  [placeholder]="currentLang === 'ar' ? 'البريد الإلكتروني' : 'Email Address'"
-                  formControlName="email" required />
->>>>>>> 478ac57f9a800269efa21c957e05fad926f5eabb
                 <div *ngIf="hasError('email')" class="invalid-feedback">{{ getErrorMessage('email') }}</div>
               </div>
             </div>
@@ -59,12 +41,7 @@
             <div class="col-12" data-animate>
               <div class="form-group">
                 <input type="tel" class="form-control" [ngClass]="{'is-invalid': hasError('phone')}"
-<<<<<<< HEAD
                   [placeholder]="currentLang === 'ar' ? 'رقم الهاتف' : 'Phone Number'" formControlName="phone" />
-=======
-                  [placeholder]="currentLang === 'ar' ? 'رقم الهاتف' : 'Phone Number'"
-                  formControlName="phone" />
->>>>>>> 478ac57f9a800269efa21c957e05fad926f5eabb
                 <div *ngIf="hasError('phone')" class="invalid-feedback">{{ getErrorMessage('phone') }}</div>
               </div>
             </div>
@@ -72,27 +49,18 @@
             <div class="col-12" data-animate>
               <div class="form-group">
                 <textarea class="form-control" [ngClass]="{'is-invalid': hasError('message')}" rows="5"
-<<<<<<< HEAD
                   [placeholder]="currentLang === 'ar' ? 'رسالتك' : 'Your Message'" formControlName="message"
                   required></textarea>
-=======
-                  [placeholder]="currentLang === 'ar' ? 'رسالتك' : 'Your Message'" formControlName="message" required></textarea>
->>>>>>> 478ac57f9a800269efa21c957e05fad926f5eabb
                 <div *ngIf="hasError('message')" class="invalid-feedback">{{ getErrorMessage('message') }}</div>
               </div>
             </div>
 
             <div class="col-12 text-center" data-animate>
               <button type="submit" class="btn btn-primary px-5 py-2" [disabled]="contactForm.invalid || isSubmitting">
-<<<<<<< HEAD
                 <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2" role="status"
                   aria-hidden="true"></span>
                 {{ isSubmitting ? (currentLang === 'ar' ? 'جاري الإرسال...' : 'Sending...') : (currentLang === 'ar' ?
                 'إرسال' : 'Submit') }}
-=======
-                <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                {{ isSubmitting ? (currentLang === 'ar' ? 'جاري الإرسال...' : 'Sending...') : (currentLang === 'ar' ? 'إرسال' : 'Submit') }}
->>>>>>> 478ac57f9a800269efa21c957e05fad926f5eabb
               </button>
             </div>
           </div>
@@ -100,11 +68,7 @@
       </div>
     </div>
 
-<<<<<<< HEAD
     <!-- <div class="row mt-5 g-4" data-animate>
-=======
-    <div class="row mt-5 g-4" data-animate>
->>>>>>> 478ac57f9a800269efa21c957e05fad926f5eabb
       <div class="col-12 col-md-6" data-animate>
         <div class="contact-info text-center p-3" data-animate>
           <i class="fas fa-phone mb-3"></i>
@@ -119,12 +83,6 @@
           <p class="mb-0">allhghayte8&#64;gmail.com</p>
         </div>
       </div>
-<<<<<<< HEAD
     </div> -->
   </div>
 </section>
-=======
-    </div>
-  </div>
-</section>
->>>>>>> 478ac57f9a800269efa21c957e05fad926f5eabb

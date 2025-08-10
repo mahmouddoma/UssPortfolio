@@ -37,25 +37,11 @@ export class AboutUsComponent implements OnInit, OnDestroy, AfterViewInit {
   };
 
   description = {
-<<<<<<< HEAD
-    ar: `شركة أسس الريادة هي شركة سعودية تقدم خدمات التسويق العقاري، إدارة الأملاك، الوساطة، التطوير، والمزادات، ملتزمة بالثقة والجودة لتمكين العملاء من اتخاذ قرارات عقارية ذكية وآمنة.`,
-    en: `Osos Al-Riyada is a Saudi company offering real estate marketing, property management, brokerage, development, and auction services. We are committed to trust and quality, enabling clients to make smart and secure property decisions.`,
-=======
-    ar: `شركة أسس الريادة هي شركة رائدة في مجال الخدمات العقارية بالمملكة العربية السعودية، تسعى إلى تقديم حلول متكاملة ومبتكرة تلبي احتياجات العملاء وتواكب تطورات السوق العقاري الحديث.
+    ar: `شركة أسس الريادة للخدمات العقارية، تقدم حلول مبتكرة في التسويق وإدارة وتطوير العقارات بثقة وجودة.`,
+    en: `Osos Al-Riyada Real Estate Services provides innovative solutions in marketing, management,
+     and development with trust and quality.
 
-نُقدم مجموعة متنوعة من الخدمات تشمل: التسويق العقاري، إدارة الأملاك، الوساطة العقارية، التطوير العقاري، والمزادات، وذلك بأعلى معايير الاحترافية والشفافية.
-
-نؤمن في "أسس الريادة" بأن الثقة والمصداقية هما حجر الأساس لأي علاقة ناجحة، لذا نحرص على بناء شراكات طويلة الأمد مع عملائنا مبنية على الجودة والالتزام والنتائج الملموسة.
-
-رؤيتنا أن نكون الخيار الأول في عالم العقار، ورسالتنا هي تمكين الأفراد والشركات من اتخاذ قرارات عقارية ذكية وآمنة من خلال خبرتنا العميقة وفريقنا المتخصص.`,
-    en: `Osos Al-Riyada is a leading real estate services company in the Kingdom of Saudi Arabia, committed to delivering integrated and innovative solutions that meet client needs and align with the modern real estate market.
-
-We provide a wide range of services, including real estate marketing, property management, real estate brokerage, development, and auctions — all delivered with the highest standards of professionalism and transparency.
-
-At Osos Al-Riyada, we believe that trust and credibility are the foundation of successful relationships. That’s why we focus on long-term partnerships built on quality, commitment, and tangible results.
-
-Our vision is to be the first choice in the real estate world, and our mission is to empower individuals and businesses to make smart and secure property decisions through our deep expertise and specialized team.`,
->>>>>>> 478ac57f9a800269efa21c957e05fad926f5eabb
+`,
   };
 
   currentLang: string = 'ar';
@@ -95,7 +81,7 @@ Our vision is to be the first choice in the real estate world, and our mission i
   setCurrentSlide(index: number): void {
     this.currentSlide = index;
     this.updateSlideClasses();
-    this.startSlideshow(); // restart interval on manual click
+    this.startSlideshow();
   }
 
   private updateSlideClasses(): void {
@@ -106,5 +92,11 @@ Our vision is to be the first choice in the real estate world, and our mission i
     this.dotElements?.forEach((dot, i) =>
       dot.nativeElement.classList.toggle('active', i === this.currentSlide)
     );
+  }
+  scrollToAuctions(): void {
+    const auctionsSection = document.querySelector('.auctions-section');
+    if (auctionsSection) {
+      auctionsSection.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }
