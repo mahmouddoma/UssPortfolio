@@ -1,0 +1,55 @@
+<h2 class="section-title text-center">
+  {{ currentLang === 'ar' ? 'المزادات' : 'Auctions' }}
+</h2>
+
+<div class="e-n-tabs">
+  <div class="e-n-tabs-heading" role="tablist">
+    <button id="e-n-tab-title-1" class="e-n-tab-title" [class.active]="selectedTab === 'all'" (click)="selectTab('all')"
+      role="tab" tabindex="0" aria-controls="e-n-tab-content-1">
+      <span class="e-n-tab-title-text">{{ currentLang === 'ar' ? 'الكل' : 'All' }}</span>
+    </button>
+    <button id="e-n-tab-title-2" class="e-n-tab-title" [class.active]="selectedTab === 'current'"
+      (click)="selectTab('current')" role="tab" tabindex="-1" aria-controls="e-n-tab-content-2">
+      <span class="e-n-tab-title-text">{{ currentLang === 'ar' ? 'المزادات الجارية' : 'Current Auctions' }}</span>
+    </button>
+    <button id="e-n-tab-title-3" class="e-n-tab-title" [class.active]="selectedTab === 'upcoming'"
+      (click)="selectTab('upcoming')" role="tab" tabindex="-1" aria-controls="e-n-tab-content-3">
+      <span class="e-n-tab-title-text">{{ currentLang === 'ar' ? 'المزادات القادمة' : 'Upcoming Auctions' }}</span>
+    </button>
+    <button id="e-n-tab-title-4" class="e-n-tab-title" [class.active]="selectedTab === 'ended'"
+      (click)="selectTab('ended')" role="tab" tabindex="-1" aria-controls="e-n-tab-content-4">
+      <span class="e-n-tab-title-text">{{ currentLang === 'ar' ? 'المزادات المنتهية' : 'Ended Auctions' }}</span>
+    </button>
+  </div>
+
+  <div class="e-n-tabs-content">
+    <div *ngIf="selectedTab === 'all'" class="tab-content">
+      <div *ngFor="let auction of auctions" class="auction-card">
+        <img [src]="auction.image" alt="{{ auction.titleAr }}" class="auction-image" />
+        <h3 class="auction-title">{{ currentLang === 'ar' ? auction.titleAr : auction.titleEn }}</h3>
+        <p class="auction-content">{{ currentLang === 'ar' ? auction.contentAr : auction.contentEn }}</p>
+      </div>
+    </div>
+    <div *ngIf="selectedTab === 'current'" class="tab-content">
+      <div *ngFor="let auction of currentAuctions" class="auction-card">
+        <img [src]="auction.image" alt="{{ auction.titleAr }}" class="auction-image" />
+        <h3 class="auction-title">{{ currentLang === 'ar' ? auction.titleAr : auction.titleEn }}</h3>
+        <p class="auction-content">{{ currentLang === 'ar' ? auction.contentAr : auction.contentEn }}</p>
+      </div>
+    </div>
+    <div *ngIf="selectedTab === 'upcoming'" class="tab-content">
+      <div *ngFor="let auction of upcomingAuctions" class="auction-card">
+        <img [src]="auction.image" alt="{{ auction.titleAr }}" class="auction-image" />
+        <h3 class="auction-title">{{ currentLang === 'ar' ? auction.titleAr : auction.titleEn }}</h3>
+        <p class="auction-content">{{ currentLang === 'ar' ? auction.contentAr : auction.contentEn }}</p>
+      </div>
+    </div>
+    <div *ngIf="selectedTab === 'ended'" class="tab-content">
+      <div *ngFor="let auction of endedAuctions" class="auction-card">
+        <img [src]="auction.image" alt="{{ auction.titleAr }}" class="auction-image" />
+        <h3 class="auction-title">{{ currentLang === 'ar' ? auction.titleAr : auction.titleEn }}</h3>
+        <p class="auction-content">{{ currentLang === 'ar' ? auction.contentAr : auction.contentEn }}</p>
+      </div>
+    </div>
+  </div>
+</div>

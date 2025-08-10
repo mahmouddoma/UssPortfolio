@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container py-5 mt-5" *ngFor="let team of teamSections" [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
   <div class="row align-items-center justify-content-center">
     <!-- الصورة -->
@@ -32,3 +33,46 @@
     </div>
   </div>
 </div>
+=======
+<div class="container py-5 mt-5">
+  <div class="row align-items-center justify-content-center">
+    <div class="col-md-7">
+      <h2 class="fw-bold mb-3 text-end">فريق العمل / Team</h2>
+      <p class="mb-3 text-end team-ar">{{ teamText }}</p>
+      <p class="mb-4 text-end team-en">{{ teamEn }}</p>
+      <div class="text-end">
+        <a class="btn btn-success px-4 py-2" href="#contact">تواصل معنا</a>
+      </div>
+    </div>
+    <div class="col-md-5 mb-4 mb-md-0 d-flex justify-content-center">
+      <div class="team-img-wrapper position-relative">
+        <div class="team-img-bg"></div>
+        <div class="team-img-content">
+          <img
+            src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80"
+            alt="Team"
+            class="img-fluid rounded shadow team-img"
+          />
+          <button
+            type="button"
+            class="btn btn-light play-btn rounded-circle shadow"
+          >
+            <span class="visually-hidden">Play</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              fill="#e3a34d"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M6.79 5.093A.5.5 0 0 1 7.5 5v6a.5.5 0 0 1-.79.407l-4.5-3a.5.5 0 0 1 0-.814l4.5-3z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+>>>>>>> 478ac57f9a800269efa21c957e05fad926f5eabb

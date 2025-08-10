@@ -8,7 +8,11 @@ import { FeatureComponent } from './components/feature/feature.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { OurServicesComponent } from './components/our-services/our-services.component';
+<<<<<<< HEAD
 import { PackagesComponent } from './components/auction/auction.component';
+=======
+import { PackagesComponent } from './components/packages/packages.component';
+>>>>>>> 478ac57f9a800269efa21c957e05fad926f5eabb
 import { AppInViewportDirective } from './directives/app-in-viewport.directive';
 import { ContactService } from './services/contact.service';
 import { CommonModule } from '@angular/common';

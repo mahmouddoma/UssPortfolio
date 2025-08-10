@@ -10,6 +10,7 @@
   overflow: hidden;
   margin-top: 50px;
 }
+<<<<<<< HEAD
 [dir="rtl"] .text-end {
   text-align: right !important;
 }
@@ -17,6 +18,8 @@
 [dir="ltr"] .text-end {
   text-align: left !important;
 }
+=======
+>>>>>>> 478ac57f9a800269efa21c957e05fad926f5eabb
 
 .team-content::before {
   content: "";
