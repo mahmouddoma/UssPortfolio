@@ -1,0 +1,139 @@
+<h2 class="text-center">
+  {{ currentLang == "ar" ? "خدماتنا العقارية" : "Our Real Estate Services" }}
+</h2>
+<h3 class="title text-center">
+  {{ currentLang == "ar" ? "الخدمات الشائعة" : "Popular Services" }}
+</h3>
+
+<!-- عرض الرسالة إذا لم تكن هناك خدمات -->
+<div *ngIf="services.length === 0" class="no-services-card">
+  <div class="no-services-content">
+    <h3>
+      <!-- Refactored to use Bootstrap classes for layout and styling -->
+      <h2 class="text-center my-4">
+        {{ currentLang == "ar" ? "خدماتنا العقارية" : "Our Real Estate Services" }}
+      </h2>
+      <h3 class="text-center mb-5">
+        {{ currentLang == "ar" ? "الخدمات الشائعة" : "Popular Services" }}
+      </h3>
+
+      <!-- Display message if no services are available -->
+      <div *ngIf="services.length === 0" class="card text-center mx-auto p-4" style="max-width: 600px;">
+        <div class="card-body">
+          <h3 class="card-title">
+            🎉
+            {{
+            currentLang == "ar"
+            ? "لا توجد خدمات متاحة حالياً"
+            : "No Services Available Yet"
+            }}
+          </h3>
+          <p>
+            {{
+            currentLang == "ar"
+            ? "هذه الميزة سيتم تفعيلها قريبًا إن شاء الله. تابعنا للمزيد."
+            : "This feature will be available soon, Insha'Allah. Stay tuned for updates."
+            }}
+          </p>
+        </div>
+      </div>
+
+      <!-- ✅ عرض الخدمات إذا وُجدت -->
+      <div *ngIf="services.length > 0" class="row" style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  ">
+        <div class="services-section" style="
+      background-color: #fdfdfd;
+      font-family: 'SuisseIntl', sans-serif;
+      padding: 40px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    ">
+          <swiper-container class="mySwiper" [spaceBetween]="20"
+            [autoplay]="{ delay: 3000, disableOnInteraction: false }" [loop]="true" [pagination]="{ clickable: true }"
+            [navigation]="true" [breakpoints]="{
+        '0': { slidesPerView: 1 },
+        '768': { slidesPerView: 2 },
+        '1024': { slidesPerView: 3 }
+      }" style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+      ">
+            <swiper-slide *ngFor="let service of services"
+              style="display: flex; justify-content: center; align-items: center">
+              <div class="service-card" style="
+            background-color: #fff;
+            border-radius: 12px;
+            border: 1px solid #e6e6e6;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            width: 270px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+          ">
+                <img [src]="service.icon" alt="{{ service.serviceNameAr }}" class="service-icon" style="
+              width: 120px;
+              height: 120px;
+              object-fit: cover;
+              border-radius: 8px;
+              margin: 15px auto;
+              border: 2px solid #f5f0e1;
+              display: block;
+            " />
+                <h3 style="
+              font-size: 18px;
+              font-weight: bold;
+              color: #0a2342;
+              margin-bottom: 6px;
+              text-align: center;
+              width: 100%;
+            ">
+                  {{
+                  currentLang == "ar"
+                  ? service.serviceNameAr
+                  : service.serviceNameEn
+                  }}
+                </h3>
+              </div>
+            </swiper-slide>
+          </swiper-container>
+          <div *ngIf="services.length > 0" class="container">
+            <div class="row">
+              <div class="col-12">
+                <swiper-container class="mySwiper" [spaceBetween]="10"
+                  [autoplay]="{ delay: 3000, disableOnInteraction: false }" [loop]="true"
+                  [pagination]="{ clickable: true }" [navigation]="true" [breakpoints]="{
+          '0': { slidesPerView: 1 },
+          '768': { slidesPerView: 2 },
+          '1024': { slidesPerView: 3 }
+        }">
+                  <swiper-slide *ngFor="let service of services">
+                    <div class="service-card">
+                      <img [src]="service.icon" alt="{{ service.serviceNameAr }}"
+                        class="img-fluid p-3 w-50 rounded-4" />
+                      <h5 class="text-white mt-3">
+                        {{
+                        currentLang == "ar"
+                        ? service.serviceNameAr
+                        : service.serviceNameEn
+                        }}
+                      </h5>
+                    </div>
+                  </swiper-slide>
+                </swiper-container>
+              </div>
+            </div>
+          </div>
