@@ -1,36 +1,61 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
+export interface Auction {
+  id: number;
+  name: string;
+  start: string;
+  end: string;
+  content: string;
+  imagePath: string;
+  pdfPath: string;
+  isDeleted?: boolean;
+  isPermanentlyDeleted?: boolean;
+  status?: 'current' | 'upcoming' | 'ended';
+  timeLeft?: string;
+  timeToStart?: string;
+  imageUrl?: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuctionService {
-  private baseUrl = 'https://osuselriadah.somee.com/api/Auction';
+  private readonly baseUrl = 'https://osuselriadah.somee.com/api/Auction';
 
   constructor(private http: HttpClient) {}
 
-  // جلب كل المزادات
-  getAllAuctions(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl);
+  getAllAuctions(): Observable<Auction[]> {
+    return this.http.get<Auction[]>(this.baseUrl);
   }
 
-  // جلب مزاد واحد حسب الـ ID
-  getAuctionById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/GetById/${id}`);
+  getAuctionById(id: number): Observable<Auction> {
+    return this.http.get<Auction>(`${this.baseUrl}/GetById/${id}`);
   }
 
-  // إضافة مزاد
-  addAuction(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/add`, data);
+  createAuction(auctionData: Omit<Auction, 'id'>): Observable<Auction> {
+    return this.http.post<Auction>(`${this.baseUrl}/add`, auctionData);
   }
 
-  // تحديث مزاد
-  updateAuction(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/update`, data);
+  updateAuction(auctionData: Auction): Observable<Auction> {
+    return this.http.post<Auction>(`${this.baseUrl}/update`, auctionData);
   }
 
-  // حذف مزاد
-  deleteAuction(id: number): Observable<any> {
-    return this.http.post(`${this.baseUrl}/Delete/${id}`, {});
+  deleteAuction(id: number): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/Delete/${id}`, {});
+  }
+
+  calculateAuctionStatus(
+    startDate: string,
+    endDate: string
+  ): 'upcoming' | 'current' | 'ended' {
+    const now = new Date();
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    if (now < start) return 'upcoming';
+    if (now >= start && now <= end) return 'current';
+    return 'ended';
   }
 }

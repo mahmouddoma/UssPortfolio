@@ -23,13 +23,14 @@ export class AboutUsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   slides: string[] = [
     'https://pbs.twimg.com/profile_banners/1756713945530822656/1723365269/1500x500',
-    'https://alzayatfirm.com/wp-content/uploads/2024/10/%D8%A3%D9%87%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A7%D8%AA-%D8%A7%D9%84%D8%B9%D9%82%D8%A7%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86%D9%8A%D8%A9-%D8%9F.jpg',
-    'https://pbs.twimg.com/profile_images/1756714052372357121/jItqW0yk_400x400.jpg',
+    'https://i.pinimg.com/736x/65/42/3f/65423f429769fc5b2d9fb2adc31137a4.jpg',
+    'https://i.pinimg.com/1200x/d2/37/6e/d2376e0164064e8f7b28e1f98187748f.jpg',
+    'https://i.pinimg.com/736x/5b/9f/bc/5b9fbc4ed0a53f32e955adca994dda0b.jpg',
   ];
 
   currentSlide = 0;
   private slideSubscription?: Subscription;
-  private readonly SLIDE_INTERVAL = 2500;
+  private readonly SLIDE_INTERVAL = 3500;
 
   sectionTitle = {
     ar: 'شركة أسس الريادة للخدمات العقارية',

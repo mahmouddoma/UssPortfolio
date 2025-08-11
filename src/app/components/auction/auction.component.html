@@ -23,6 +23,9 @@
     <!-- Swiper Container -->
     <div class="swiper auction-swiper">
       <div class="swiper-wrapper">
+        <div *ngIf="isLoading" class="loading-indicator">
+          {{ currentLang === 'ar' ? 'جاري التحميل...' : 'Loading...' }}
+        </div>
         <div *ngFor="let auction of filteredAuctions" class="swiper-slide">
           <div class="auction-card">
             <span class="status-badge" [ngClass]="auction.status">
@@ -32,25 +35,38 @@
               auction.status }}
             </span>
 
-            <img [src]="auction.imageUrl" [alt]="currentLang === 'ar' ? auction.titleAr : auction.titleEn"
+            <img [src]="auction.imageUrl" [alt]="currentLang === 'ar' ? auction.name : auction.name"
               class="auction-image" />
 
             <h3 class="auction-title">
-              {{ currentLang === 'ar' ? auction.titleAr : auction.titleEn }}
+              {{ auction.name }}
             </h3>
 
             <div class="auction-info">
               <div class="info-item">
                 <label>{{ currentLang === 'ar' ? 'تاريخ البداية' : 'Start Date' }}</label>
-                <span>{{ auction.startDate | date:'mediumDate' }}</span>
+                <span>{{ auction.start | date:'mediumDate' }}</span>
               </div>
               <div class="info-item">
                 <label>{{ currentLang === 'ar' ? 'تاريخ النهاية' : 'End Date' }}</label>
-                <span>{{ auction.endDate | date:'mediumDate' }}</span>
+                <span>{{ auction.end | date:'mediumDate' }}</span>
               </div>
+
+              <!-- Time left for current auctions -->
+              <div *ngIf="auction.status === 'current'" class="info-item">
+                <label>{{ currentLang === 'ar' ? 'الوقت المتبقي' : 'Time Left' }}</label>
+                <span class="time-counter">{{ auction.timeLeft }}</span>
+              </div>
+
+              <!-- Time until start for upcoming auctions -->
+              <div *ngIf="auction.status === 'upcoming'" class="info-item">
+                <label>{{ currentLang === 'ar' ? 'يبدأ بعد' : 'Starts In' }}</label>
+                <span class="time-counter">{{ auction.timeToStart }}</span>
+              </div>
+
               <div class="info-item full-width">
                 <label>{{ currentLang === 'ar' ? 'الوصف' : 'Description' }}</label>
-                <p>{{ currentLang === 'ar' ? auction.descriptionAr : auction.descriptionEn }}</p>
+                <p>{{ auction.content }}</p>
               </div>
             </div>
 
@@ -58,15 +74,6 @@
               <a *ngIf="auction.pdfUrl" [href]="auction.pdfUrl" target="_blank" class="pdf-link">
                 📄 {{ currentLang === 'ar' ? 'تحميل الكتيب' : 'Download PDF' }}
               </a>
-
-              <div class="action-buttons">
-                <button class="action-btn edit-btn" type="button">
-                  {{ currentLang === 'ar' ? 'تعديل' : 'Edit' }}
-                </button>
-                <button class="action-btn delete-btn" type="button">
-                  {{ currentLang === 'ar' ? 'حذف' : 'Delete' }}
-                </button>
-              </div>
             </div>
           </div>
         </div>

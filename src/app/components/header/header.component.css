@@ -20,6 +20,7 @@
   transition: all 0.4s ease;
   padding: 1rem 0;
 }
+
 /* Dropdown click behavior */
 .custom-dropdown .dropdown-menu {
   display: none;
@@ -70,6 +71,7 @@
   [dir="rtl"] .navbar-brand.d-lg-none {
     margin-left: 1;
   }
+
   [dir="ltr"] .navbar-brand.d-lg-none {
     margin-right: auto;
   }
@@ -100,8 +102,8 @@
 /* Logo */
 .img-navbar {
   border-radius: 50%;
-  width: 45px;
-  height: 45px;
+  width: 65px;
+  height: 65px;
   transition: transform 0.3s ease;
 }
 

@@ -278,3 +278,19 @@
     height: 140px;
   }
 }
+.time-counter {
+  font-family: monospace;
+  font-size: 1.1em;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+/* For current auctions */
+.status-badge.current + .time-counter {
+  color: #e74c3c; /* Red color for urgency */
+}
+
+/* For upcoming auctions */
+.status-badge.upcoming + .time-counter {
+  color: #3498db; /* Blue color for upcoming */
+}

@@ -4,15 +4,15 @@ import {
   Renderer2,
   AfterViewInit,
   OnDestroy,
-  Input
+  Input,
 } from '@angular/core';
 
 @Directive({
-  selector: '[appAppInViewport]'
+  selector: '[appAppInViewport]',
 })
 export class AppInViewportDirective implements AfterViewInit, OnDestroy {
   @Input() animationClass: string = 'fade-from-bottom';
-  
+
   private observer: IntersectionObserver | null = null;
   private hasAnimated = false;
 
@@ -21,19 +21,22 @@ export class AppInViewportDirective implements AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     // Add initial animation class
     this.renderer.addClass(this.el.nativeElement, this.animationClass);
-    
-    this.observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !this.hasAnimated) {
-          this.renderer.addClass(this.el.nativeElement, 'show');
-          this.hasAnimated = true;
-          this.observer?.unobserve(this.el.nativeElement);
-        }
-      });
-    }, { 
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
+
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !this.hasAnimated) {
+            this.renderer.addClass(this.el.nativeElement, 'show');
+            this.hasAnimated = true;
+            this.observer?.unobserve(this.el.nativeElement);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      }
+    );
 
     this.observer.observe(this.el.nativeElement);
   }

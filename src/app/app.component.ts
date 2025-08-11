@@ -8,10 +8,10 @@ import { FeatureComponent } from './components/feature/feature.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { OurServicesComponent } from './components/our-services/our-services.component';
-import { PackagesComponent } from './components/auction/auction.component';
 import { AppInViewportDirective } from './directives/app-in-viewport.directive';
 import { ContactService } from './services/contact.service';
 import { CommonModule } from '@angular/common';
+import { PackagesComponent } from './components/auction/auction.component';
 
 @Component({
   selector: 'app-root',
@@ -25,10 +25,10 @@ import { CommonModule } from '@angular/common';
     FooterComponent,
     HeaderComponent,
     OurServicesComponent,
-    PackagesComponent,
     AppInViewportDirective,
     RouterOutlet,
     CommonModule,
+    PackagesComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
