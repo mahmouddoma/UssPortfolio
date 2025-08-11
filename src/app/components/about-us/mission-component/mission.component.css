@@ -11,6 +11,7 @@
   background-color: var(--mission-light);
   position: relative;
   overflow: hidden;
+  margin-top: 110px;
 }
 
 .mission-container {

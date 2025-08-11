@@ -2,17 +2,18 @@
   <div class="container-fluid">
 
     <!-- Logo Small Screen -->
-    <a class="navbar-brand order-2 order-lg-1 d-lg-none" href="#">
+    <a class="navbar-brand d-lg-none" [class.order-1]="currentLang === 'en'" [class.order-2]="currentLang === 'ar'"
+      href="#">
       <img src="https://pbs.twimg.com/profile_images/1756714052372357121/jItqW0yk_400x400.jpg" alt="شعار أسس الريادة"
         width="40" height="40" class="img-navbar" loading="lazy" />
     </a>
 
     <!-- Hamburger -->
-    <button class="navbar-toggler order-1 order-lg-1" type="button" data-bs-toggle="collapse"
-      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" [class.order-1]="currentLang === 'ar'" [class.order-2]="currentLang === 'en'"
+      type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <!-- Nav Links -->
     <div class="collapse navbar-collapse order-3 order-lg-2" id="navbarNav">
       <ul class="navbar-nav mx-auto align-items-lg-center text-center justify-content-center justify-content-lg-start">
@@ -66,7 +67,7 @@
       </ul>
 
       <!-- Logo Desktop -->
-      <a class="navbar-brand d-none d-lg-block ms-lg-3" [class.ms-lg-auto]="currentLang === 'en'"
+      <a class="navbar-brand d-none d-lg-block" [class.ms-lg-auto]="currentLang === 'en'"
         [class.me-lg-auto]="currentLang === 'ar'" href="#">
         <img src="https://pbs.twimg.com/profile_images/1756714052372357121/jItqW0yk_400x400.jpg" alt="شعار أسس الريادة"
           width="50" height="50" class="img-navbar" loading="lazy" />

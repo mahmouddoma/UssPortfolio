@@ -1,22 +1,40 @@
 <section class="development-container">
     <!-- Hero Section -->
-    <div class="hero-section">
-        <div class="hero-content">
-            <h1>تطوير العقارات بأعلى جودة</h1>
-            <p class="subtitle">نبني مشاريع عقارية استثنائية تجمع بين التصميم المبتكر والجودة العالية</p>
-            <div class="cta-buttons">
-                <button class="cta-button primary" (click)="navigateTo('contact')">
-                    {{ currentLang === 'ar' ? 'ابدأ الآن' : 'Get Started' }}
-                </button>
-                <button class="cta-button secondary" (click)="navigateTo('vision')">
-                    {{ currentLang === 'ar' ? 'تعرف علينا أكثر' : 'Learn More' }}
-                </button>
+    <div class="container hero-section">
+        <div class="row align-items-center" [attr.dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
+
+            <!-- النص -->
+            <div class="col-lg-6 hero-content" [ngClass]="currentLang === 'ar' ? 'text-end' : 'text-start'">
+                <h1>
+                    {{ currentLang === 'ar'
+                    ? 'تطوير العقارات بأعلى جودة'
+                    : 'Real Estate Development with the Highest Quality' }}
+                </h1>
+                <p class="subtitle">
+                    {{ currentLang === 'ar'
+                    ? 'نبني مشاريع عقارية استثنائية تجمع بين التصميم المبتكر والجودة العالية'
+                    : 'We build exceptional real estate projects combining innovative design and high quality' }}
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary me-2" (click)="navigateTo('contact')">
+                        {{ currentLang === 'ar' ? 'ابدأ الآن' : 'Get Started' }}
+                    </button>
+                    <button class="btn btn-outline-primary" (click)="navigateTo('vision')">
+                        {{ currentLang === 'ar' ? 'تعرف علينا أكثر' : 'Learn More' }}
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="hero-image">
-            <img src="https://i.pinimg.com/1200x/70/9c/85/709c850b624123f6f51bc658d3dc71c7.jpg" alt="تطوير عقاري">
+
+            <!-- الصورة -->
+            <div class="col-lg-6 hero-image text-center">
+                <img class="img-fluid rounded shadow"
+                    src="https://i.pinimg.com/1200x/70/9c/85/709c850b624123f6f51bc658d3dc71c7.jpg" alt="تطوير عقاري">
+            </div>
+
         </div>
     </div>
+
+
 
     <!-- Features Section -->
     <div class="features-section">

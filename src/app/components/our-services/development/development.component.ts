@@ -29,14 +29,11 @@ interface TeamMember {
 export class DevelopmentComponent {
   currentLang: 'ar' | 'en' = 'ar';
 
-  activeTech: string = 'Concrete';
+  activeTech = 'Concrete';
   features = [
     {
       icon: 'home_work',
-      title: {
-        en: 'Innovative Designs',
-        ar: 'تصاميم مبتكرة',
-      },
+      title: { en: 'Innovative Designs', ar: 'تصاميم مبتكرة' },
       description: {
         en: 'We create unique architectural designs tailored to each project.',
         ar: 'نبتكر تصاميم معمارية فريدة تناسب كل مشروع.',
@@ -44,10 +41,7 @@ export class DevelopmentComponent {
     },
     {
       icon: 'engineering',
-      title: {
-        en: 'Quality Construction',
-        ar: 'بناء عالي الجودة',
-      },
+      title: { en: 'Quality Construction', ar: 'بناء عالي الجودة' },
       description: {
         en: 'Using premium materials and expert craftsmanship.',
         ar: 'نستخدم أفضل المواد وأعلى مستويات الحرفية.',
@@ -55,10 +49,7 @@ export class DevelopmentComponent {
     },
     {
       icon: 'eco',
-      title: {
-        en: 'Sustainability',
-        ar: 'الاستدامة',
-      },
+      title: { en: 'Sustainability', ar: 'الاستدامة' },
       description: {
         en: 'Eco-friendly and energy-efficient building solutions.',
         ar: 'حلول بناء صديقة للبيئة وموفرة للطاقة.',
@@ -100,7 +91,6 @@ export class DevelopmentComponent {
 
   constructor(private router: Router) {
     this.currentLang = (localStorage.getItem('lang') as 'ar' | 'en') || 'ar';
-
     this.applyLanguageSettings();
   }
 
@@ -119,18 +109,7 @@ export class DevelopmentComponent {
     this.activeTech = tech;
   }
 
-  startProject() {
-    console.log('Project started!');
-  }
-
-  learnMore() {
-    console.log('Learn more clicked');
-  }
-
-  contactUs() {
-    console.log('Contact form or modal opened');
-  }
-  navigateTo(route: string): void {
+  navigateTo(route: string) {
     this.router.navigate([`/${route}`]);
   }
 }
