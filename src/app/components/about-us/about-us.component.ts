@@ -50,9 +50,15 @@ export class AboutUsComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(public contactService: ContactService) {}
 
   ngOnInit(): void {
-    this.startSlideshow();
     const savedLang = localStorage.getItem('lang');
     this.currentLang = savedLang === 'en' ? 'en' : 'ar';
+
+    document.documentElement.setAttribute(
+      'dir',
+      this.currentLang === 'ar' ? 'rtl' : 'ltr'
+    );
+
+    this.startSlideshow();
   }
 
   ngAfterViewInit(): void {
@@ -61,6 +67,11 @@ export class AboutUsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy(): void {
     this.stopSlideshow();
+  }
+  switchLang(lang: 'ar' | 'en'): void {
+    this.currentLang = lang;
+    localStorage.setItem('lang', lang);
+    document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
   }
 
   private startSlideshow(): void {

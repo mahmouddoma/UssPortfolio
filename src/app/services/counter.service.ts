@@ -8,12 +8,15 @@ export interface CounterConfig {
 }
 
 export interface CounterItem {
+  [x: string]: any;
   label: string;
   target: number;
   icon: string;
   count: number;
   interval?: any;
-  duration?: number;
+  duration: number;
+  labelAr: string;
+  labelEn: string;
 }
 
 @Injectable({
@@ -24,36 +27,43 @@ export class CounterService {
   private readonly DEFAULT_REFRESH_RATE = 16;
   private readonly DEFAULT_THRESHOLD = 0.5;
   private readonly DEFAULT_ROOT_MARGIN = '0px 0px -10% 0px';
-
   getCounters(): CounterItem[] {
     return [
       {
-        label: 'العقارات المُباعة',
-        target: 120,
-        icon: 'fa-solid fa-building-circle-check',
+        icon: 'fas fa-users',
         count: 0,
-        duration: 1800,
-      },
-      {
-        label: 'المزادات الناجحة',
-        target: 35,
-        icon: 'fa-solid fa-gavel',
-        count: 0,
-        duration: 1500,
-      },
-      {
-        label: 'العملاء الراضون',
-        target: 500,
-        icon: 'fa-solid fa-user-check',
-        count: 0,
+        target: 1250,
+        labelAr: 'عملاء سعداء',
+        labelEn: 'Happy Clients',
         duration: 2000,
+        label: '',
       },
       {
-        label: 'المشاريع العقارية',
-        target: 18,
-        icon: 'fa-solid fa-city',
+        icon: 'fas fa-project-diagram',
         count: 0,
-        duration: 1200,
+        target: 340,
+        labelAr: 'مشاريع مكتملة',
+        labelEn: 'Projects Completed',
+        duration: 2000,
+        label: '',
+      },
+      {
+        icon: 'fas fa-trophy',
+        count: 0,
+        target: 28,
+        labelAr: 'جوائز مكتسبة',
+        labelEn: 'Awards Won',
+        duration: 2000,
+        label: '',
+      },
+      {
+        icon: 'fas fa-clock',
+        count: 0,
+        target: 7500,
+        labelAr: 'ساعة عمل',
+        labelEn: 'Working Hours',
+        duration: 2000,
+        label: '',
       },
     ];
   }
@@ -82,7 +92,9 @@ export class CounterService {
     return { progress, easeProgress };
   }
 
-  formatNumber(value: number, locale: string = 'ar-EG'): string {
-    return new Intl.NumberFormat(locale).format(value);
+  formatNumber(value: number, lang: string): string {
+    return lang === 'ar'
+      ? new Intl.NumberFormat('ar-EG').format(value)
+      : new Intl.NumberFormat('en-US').format(value);
   }
 }
