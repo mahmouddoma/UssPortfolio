@@ -57,6 +57,7 @@ export class PackagesComponent implements OnInit, AfterViewInit, OnDestroy {
   filteredAuctions: Auction[] = [];
   selectedTab: 'all' | 'current' | 'upcoming' | 'ended' = 'all';
   isLoading = false;
+  noAuctionsMessage = '';
 
   private subscriptions = new Subscription();
   private timerSubscription?: Subscription;
@@ -120,15 +121,9 @@ export class PackagesComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const minutes = Math.floor(diff / (1000 * 60));
 
-    if (this.currentLang === 'ar') {
-      return `${days} يوم ${hours} ساعة ${minutes} دقيقة`;
-    } else {
-      return `${days} days ${hours} hours ${minutes} minutes`;
-    }
-  }
-
-  private padZero(num: number): string {
-    return num < 10 ? `0${num}` : `${num}`;
+    return this.currentLang === 'ar'
+      ? `${days} يوم ${hours} ساعة ${minutes} دقيقة`
+      : `${days} days ${hours} hours ${minutes} minutes`;
   }
 
   /** -------------------- Data Loading -------------------- **/
@@ -137,25 +132,26 @@ export class PackagesComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const sub = this.auctionService.getAllAuctions().subscribe({
       next: (data: any[]) => {
+        console.log('API returned auctions:', data);
+
         this.auctions = data.map((auction) => {
-          const processedAuction: Auction = {
+          const status =
+            this.auctionService.calculateAuctionStatus(
+              auction.start,
+              auction.end
+            ) || 'unknown'; // fallback
+
+          return {
             ...auction,
-            status: (() => {
-              const status = this.auctionService.calculateAuctionStatus(
-                auction.start,
-                auction.end
-              );
-              console.log(`Calculated status for ${auction.name}:`, status);
-              return status;
-            })(),
+            status,
             timeLeft: this.calculateCountdown(auction.end) || '',
             timeToStart: this.calculateCountdown(auction.start) || '',
             imageUrl: this.getFullImageUrl(auction.imagePath),
           };
-          return processedAuction;
         });
 
         this.applyFilter();
+
         this.isLoading = false;
         this.updateLayout();
       },
@@ -167,6 +163,7 @@ export class PackagesComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.subscriptions.add(sub);
   }
+
   private getFullImageUrl(relativePath: string): string {
     return `https://osuselriadah.somee.com/${relativePath}`;
   }
@@ -178,9 +175,8 @@ export class PackagesComponent implements OnInit, AfterViewInit, OnDestroy {
     this.updateLayout();
   }
 
-  private applyFilter(): void {
-    console.log('Applying filter for:', this.selectedTab);
-    console.log('All auctions:', this.auctions);
+  applyFilter(): void {
+    console.log('Filtering for tab:', this.selectedTab);
 
     if (this.selectedTab === 'all') {
       this.filteredAuctions = [...this.auctions];
@@ -190,8 +186,19 @@ export class PackagesComponent implements OnInit, AfterViewInit, OnDestroy {
       );
     }
 
-    console.log('Filtered result:', this.filteredAuctions);
+    if (this.filteredAuctions.length === 0) {
+      this.noAuctionsMessage =
+        this.currentLang === 'ar'
+          ? 'لا يوجد مزادات حالياً'
+          : 'No auctions available at the moment';
+      console.warn('No auctions found for this tab');
+    } else {
+      this.noAuctionsMessage = '';
+    }
+
+    console.log('Filtered auctions count:', this.filteredAuctions.length);
   }
+
   /** -------------------- Layout / Swiper -------------------- **/
   private updateLayout(): void {
     this.handleSingleCardLayout();

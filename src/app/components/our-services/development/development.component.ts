@@ -7,7 +7,8 @@ interface Feature {
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { CountUpDirective } from '../../../directives/count-up.directive';
-
+import { Router } from '@angular/router';
+import { Direction } from '@angular/cdk/bidi';
 interface TeamMember {
   name: string;
   role: string;
@@ -29,7 +30,6 @@ export class DevelopmentComponent {
   currentLang: 'ar' | 'en' = 'ar';
 
   activeTech: string = 'Concrete';
-
   features = [
     {
       icon: 'home_work',
@@ -98,7 +98,7 @@ export class DevelopmentComponent {
     },
   ];
 
-  constructor() {
+  constructor(private router: Router) {
     this.currentLang = (localStorage.getItem('lang') as 'ar' | 'en') || 'ar';
 
     this.applyLanguageSettings();
@@ -129,5 +129,8 @@ export class DevelopmentComponent {
 
   contactUs() {
     console.log('Contact form or modal opened');
+  }
+  navigateTo(route: string): void {
+    this.router.navigate([`/${route}`]);
   }
 }

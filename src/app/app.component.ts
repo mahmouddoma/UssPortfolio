@@ -12,6 +12,7 @@ import { AppInViewportDirective } from './directives/app-in-viewport.directive';
 import { ContactService } from './services/contact.service';
 import { CommonModule } from '@angular/common';
 import { PackagesComponent } from './components/auction/auction.component';
+import { OwlComponent } from './components/owl/owl.component';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,7 @@ import { PackagesComponent } from './components/auction/auction.component';
     RouterOutlet,
     CommonModule,
     PackagesComponent,
+    OwlComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CountUp, CountUpOptions } from 'countup.js';
 import { CountUpDirective } from '../../../directives/count-up.directive';
+import { Router } from '@angular/router';
 
 interface Feature {
   icon: string;
@@ -29,6 +30,7 @@ interface Statistic {
 })
 export class BrokerageComponent implements OnInit {
   @Input() currentLang: 'en' | 'ar' = 'en';
+  constructor(private router: Router) {}
 
   // Hero Section Data
   companyTitle = {
@@ -143,16 +145,18 @@ export class BrokerageComponent implements OnInit {
       ar: 'سجل الآن واحصل على مكافأة ترحيبية تصل إلى 5000$',
     },
     buttonText: {
-      en: 'Open Free Account',
-      ar: 'إفتح حساب مجاني',
+      en: 'Know More',
+      ar: 'شاهد المزيد',
     },
   };
 
   // Button Handlers
-  openAccount() {
-    console.log('Account opening initiated');
+  scrollDown(): void {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
   }
-
   learnMore() {
     console.log('Learn more clicked');
   }
@@ -162,6 +166,7 @@ export class BrokerageComponent implements OnInit {
       .fill(false)
       .map((_, i) => i < rating);
   }
-
-  constructor() {}
+  navigateTo(route: string): void {
+    this.router.navigate([`/${route}`]);
+  }
 }

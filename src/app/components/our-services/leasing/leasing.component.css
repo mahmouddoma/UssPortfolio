@@ -105,7 +105,8 @@
   background-color: var(--background);
   padding: 3rem 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(46, 101, 185, 0.15); /* ظل أزرق خفيف */
+  box-shadow: 0 4px 15px rgba(46, 101, 185, 0.15);
+  /* ظل أزرق خفيف */
   max-width: 1200px;
   margin: 0 auto 4rem auto;
 }
@@ -169,6 +170,7 @@
   color: var(--text-dark);
   line-height: 1.6;
 }
+
 /* Properties Section */
 .leasing__properties {
   max-width: 1200px;
@@ -558,5 +560,138 @@
   .leasing__filter-group {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* comming soon  */
+.coming-soon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: 2rem;
+  background-color: #f9fafb;
+  margin-top: 110px;
+}
+
+.coming-soon-content {
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.icon-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.main-icon {
+  font-size: 4rem;
+  width: auto;
+  height: auto;
+  color: #4f46e5;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.coming-soon-text {
+  font-size: 1.2rem;
+  color: #4b5563;
+  margin-bottom: 2rem;
+}
+
+.progress-container {
+  width: 80%;
+  margin: 0 auto 2rem;
+}
+
+.contact-text {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] .coming-soon-text,
+[dir="rtl"] .contact-text {
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .coming-soon-content {
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .coming-soon-text {
+    font-size: 1rem;
+  }
+
+  .main-icon {
+    font-size: 3rem;
+  }
+}
+
+/* For both RTL and LTR */
+.custom-mat-button {
+  padding: 0.75rem 2rem !important;
+  border-radius: 50px !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  box-shadow: 0 4px 8px rgba(79, 70, 229, 0.3) !important;
+  min-width: 180px;
+  margin-top: 1rem;
+}
+
+/* Arabic specific styles */
+[dir="rtl"] .custom-mat-button {
+  font-family: 'Tajawal', sans-serif !important;
+  padding: 0.85rem 2rem !important;
+  /* Slightly more padding for Arabic */
+}
+
+/* Hover state */
+.custom-mat-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(79, 70, 229, 0.35) !important;
+}
+
+/* Focus state */
+.custom-mat-button:focus {
+  outline: 2px solid rgba(79, 70, 229, 0.4);
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+.custom-mat-button:disabled {
+  background-color: #e5e7eb !important;
+  color: #9ca3af !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .custom-mat-button {
+    padding: 0.65rem 1.5rem !important;
+    font-size: 1rem !important;
+    min-width: 160px;
+  }
+
+  [dir="rtl"] .custom-mat-button {
+    padding: 0.75rem 1.5rem !important;
   }
 }

@@ -278,6 +278,7 @@
     height: 140px;
   }
 }
+
 .time-counter {
   font-family: monospace;
   font-size: 1.1em;
@@ -286,11 +287,20 @@
 }
 
 /* For current auctions */
-.status-badge.current + .time-counter {
-  color: #e74c3c; /* Red color for urgency */
+.status-badge.current+.time-counter {
+  color: #e74c3c;
+  /* Red color for urgency */
 }
 
 /* For upcoming auctions */
-.status-badge.upcoming + .time-counter {
-  color: #3498db; /* Blue color for upcoming */
+.status-badge.upcoming+.time-counter {
+  color: #3498db;
+  /* Blue color for upcoming */
+}
+
+.no-auctions-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  padding: 2rem;
 }

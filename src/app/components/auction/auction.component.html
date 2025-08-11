@@ -26,6 +26,11 @@
         <div *ngIf="isLoading" class="loading-indicator">
           {{ currentLang === 'ar' ? 'جاري التحميل...' : 'Loading...' }}
         </div>
+        <div *ngIf="filteredAuctions.length === 0 && !isLoading"
+          class="no-auctions-message w-100 justify-content-center">
+          {{ currentLang === 'ar' ? 'لا يوجد مزادات حالياً' : 'No auctions available at the moment' }}
+        </div>
+
         <div *ngFor="let auction of filteredAuctions" class="swiper-slide">
           <div class="auction-card">
             <span class="status-badge" [ngClass]="auction.status">

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { Router } from '@angular/router';
 
 interface Feature {
   icon: string;
@@ -64,7 +66,7 @@ interface Payment {
 @Component({
   selector: 'app-management',
   standalone: true,
-  imports: [MatIconModule, FormsModule, CommonModule],
+  imports: [MatIconModule, FormsModule, CommonModule, MatProgressBarModule],
   templateUrl: './management.component.html',
   styleUrls: ['./management.component.css'],
 })
@@ -73,7 +75,8 @@ export class ManagementComponent {
   newPropertyModal = false;
   newTenantModal = false;
   newMaintenanceModal = false;
-
+  currentLang: string = 'ar';
+  constructor(private router: Router) {}
   // Property selection
   selectedPropertyForTenant: Property | null = null;
 
@@ -484,5 +487,8 @@ export class ManagementComponent {
     console.log('Register new property');
     this.setActiveTab('properties');
     this.newPropertyModal = true;
+  }
+  navigateTo(route: string): void {
+    this.router.navigate([`/${route}`]);
   }
 }

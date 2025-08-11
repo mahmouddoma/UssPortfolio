@@ -1,5 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+
+interface TeamMember {
+  titleAr: string;
+  titleEn: string;
+  textAr: string;
+  textEn: string;
+  imageUrl: string;
+}
 
 @Component({
   selector: 'app-team',
@@ -7,9 +16,9 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./team.component.css'],
   imports: [CommonModule],
 })
-export class TeamComponent {
+export class TeamComponent implements OnInit {
   currentLang: string = 'ar';
-
+  constructor(private router: Router) {}
   teamSections = [
     {
       titleAr: 'فريق العمل',
@@ -32,5 +41,8 @@ export class TeamComponent {
   ngOnInit(): void {
     const savedLang = localStorage.getItem('lang');
     this.currentLang = savedLang === 'en' ? 'en' : 'ar';
+  }
+  navigateTo(route: string): void {
+    this.router.navigate([`/${route}`]);
   }
 }

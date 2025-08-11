@@ -2,6 +2,8 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 interface Feature {
   icon: string;
@@ -34,11 +36,13 @@ interface ProcessStep {
 
 @Component({
   selector: 'app-leasing',
-  imports: [MatIconModule, CommonModule, FormsModule],
+  imports: [MatIconModule, CommonModule, FormsModule, MatProgressBarModule],
   templateUrl: './leasing.component.html',
   styleUrl: './leasing.component.css',
 })
 export class LeasingComponent {
+  currentLang: string = 'ar';
+  constructor(private router: Router) {}
   hero = {
     title: 'حلول تأجير العقارات الممتازة',
     subtitle: 'نسهل عملية تأجير العقارات بمنصتنا المتكاملة وإدارتنا الاحترافية',
@@ -215,5 +219,8 @@ export class LeasingComponent {
   registerProperty() {
     console.log('تسجيل عقار جديد');
     alert('سيتم توجيهك إلى صفحة تسجيل العقار');
+  }
+  navigateTo(route: string): void {
+    this.router.navigate([`/${route}`]);
   }
 }

@@ -1,5 +1,4 @@
-<section class="leasing">
-    <!-- Hero Section -->
+<!-- <section class="leasing">
     <div class="leasing__hero">
         <div class="leasing__hero-content">
             <h1>{{ hero.title }}</h1>
@@ -14,7 +13,6 @@
         </div>
     </div>
 
-    <!-- Features Section -->
     <div class="leasing__features">
         <h2 class="leasing__section-title">لماذا تختار خدماتنا للتأجير؟</h2>
         <div class="leasing__features-grid">
@@ -26,7 +24,6 @@
         </div>
     </div>
 
-    <!-- Properties Section -->
     <div class="leasing__properties">
         <h2 class="leasing__section-title">وحداتنا المتاحة للتأجير</h2>
 
@@ -77,7 +74,6 @@
         </div>
     </div>
 
-    <!-- Process Section -->
     <div class="leasing__process">
         <h2 class="leasing__section-title">كيفية تأجير عقارك معنا</h2>
         <div class="leasing__process-steps">
@@ -89,10 +85,31 @@
         </div>
     </div>
 
-    <!-- CTA Section -->
     <div class="leasing__cta">
         <h2 class="leasing__cta-title">{{ cta.title }}</h2>
         <p class="leasing__cta-desc">{{ cta.description }}</p>
         <button class="leasing__cta-button" (click)="registerProperty()">{{ cta.button }}</button>
     </div>
-</section>
+</section> -->
+
+<div class="coming-soon-container">
+    <div class="coming-soon-content">
+        <div class="icon-wrapper">
+            <mat-icon class="main-icon">home_work</mat-icon>
+        </div>
+        <h1>{{ currentLang === 'ar' ? 'خدمات التأجير' : 'Leasing Services' }}</h1>
+        <p class="coming-soon-text">
+            {{ currentLang === 'ar' ? 'قريبًا... هذه الصفحة قيد الإنشاء' : 'Coming soon... This page is under
+            construction' }}
+        </p>
+        <div class="progress-container">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <p class="contact-text">
+            {{ currentLang === 'ar' ? 'تواصل معنا لمعرفة المزيد' : 'Contact us to learn more' }}
+        </p>
+        <button mat-raised-button color="primary" (click)="navigateTo('contact')" class="custom-mat-button">
+            {{ currentLang === 'ar' ? 'تواصل معنا' : 'Contact Us' }}
+        </button>
+    </div>
+</div>

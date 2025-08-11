@@ -125,7 +125,7 @@ export class OurServicesComponent {
       labelEn: 'Development',
     },
     { link: '/brokerage', labelAr: 'الوساطة العقارية', labelEn: 'Brokerage' },
-    { link: '/management', labelAr: 'إدارة الأملاك', labelEn: 'Management' },
+    { link: '/mangement', labelAr: 'إدارة الأملاك', labelEn: 'Management' },
     { link: '/leasing', labelAr: 'التمليك والتأجير', labelEn: 'Leasing' },
     { link: '/marketing', labelAr: 'التسويق العقاري', labelEn: 'Marketing' },
   ];

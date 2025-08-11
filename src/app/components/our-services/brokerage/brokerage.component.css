@@ -7,6 +7,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.05);
   overflow: hidden;
+  margin-top: 110px;
 }
 
 .brokerage-container.en {
@@ -359,6 +360,7 @@
     margin: 0;
   }
 }
+
 .stats-section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));

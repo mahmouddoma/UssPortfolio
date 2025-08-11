@@ -11,6 +11,10 @@
   overflow: hidden;
 }
 
+.contact-section {
+  margin-top: 100px;
+}
+
 h2 {
   text-align: center;
   color: #333;
@@ -105,7 +109,8 @@ button:hover:not(:disabled) {
 }
 
 textarea {
-  resize: none; /* تعطيل تغيير الحجم */
+  resize: none;
+  /* تعطيل تغيير الحجم */
 }
 
 .contact-section {
@@ -171,7 +176,7 @@ textarea {
   transition: all 0.3s ease;
 }
 
-.is-invalid ~ .invalid-feedback {
+.is-invalid~.invalid-feedback {
   opacity: 1;
   transform: translateY(0);
 }
@@ -225,6 +230,7 @@ button[type="submit"]:disabled {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

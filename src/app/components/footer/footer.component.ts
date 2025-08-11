@@ -20,8 +20,8 @@ export class FooterComponent {
   }
   currentYear = new Date().getFullYear();
   companyName: Record<'ar' | 'en', string> = {
-    ar: 'أجيال القرآن',
-    en: 'Ajyal Al-Quran',
+    ar: 'أسس الريادة للخدمات العقارية',
+    en: 'Osos Al-Riyada Real Estate Services',
   };
 
   quickLinks = [
@@ -33,25 +33,25 @@ export class FooterComponent {
 
   contactInfo = {
     email: 'allhghayte8@gmail.com',
-    phone: '+201099381081',
+    phone: '+00966575060000',
   };
-  socialLinks = [
-    {
-      icon: 'youtube',
-      url: 'https://youtube.com/@ajyal_elpraan?si=DtyVJ8hdBoWbC_1V',
-      ariaLabel: 'شاهد قناتنا الأولى على يوتيوب',
-    },
-    {
-      icon: 'youtube',
-      url: 'https://youtube.com/@agyal-alqoran?si=CLZECCURk8jHZvm_',
-      ariaLabel: 'شاهد قناتنا الثانية على يوتيوب',
-    },
-    {
-      icon: 'telegram',
-      url: 'https://youtube.com/@agyal-alqoran?si=CLZECCURk8jHZvm_',
-      ariaLabel: 'انضم إلى قناتنا على تيليجرام',
-    },
-  ];
+  // socialLinks = [
+  //   {
+  //     icon: 'youtube',
+  //     url: 'https://youtube.com/@ajyal_elpraan?si=DtyVJ8hdBoWbC_1V',
+  //     ariaLabel: 'شاهد قناتنا الأولى على يوتيوب',
+  //   },
+  //   {
+  //     icon: 'youtube',
+  //     url: 'https://youtube.com/@agyal-alqoran?si=CLZECCURk8jHZvm_',
+  //     ariaLabel: 'شاهد قناتنا الثانية على يوتيوب',
+  //   },
+  //   {
+  //     icon: 'telegram',
+  //     url: 'https://youtube.com/@agyal-alqoran?si=CLZECCURk8jHZvm_',
+  //     ariaLabel: 'انضم إلى قناتنا على تيليجرام',
+  //   },
+  // ];
   /**
    * Scroll to a section when clicking a navigation link.
    * @param event - The click event from the navigation link.

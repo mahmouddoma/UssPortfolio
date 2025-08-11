@@ -5,29 +5,39 @@
             <h1>تطوير العقارات بأعلى جودة</h1>
             <p class="subtitle">نبني مشاريع عقارية استثنائية تجمع بين التصميم المبتكر والجودة العالية</p>
             <div class="cta-buttons">
-                <button class="primary-button">ابدأ الآن</button>
-                <button class="secondary-button">تعرف علينا أكثر</button>
+                <button class="cta-button primary" (click)="navigateTo('contact')">
+                    {{ currentLang === 'ar' ? 'ابدأ الآن' : 'Get Started' }}
+                </button>
+                <button class="cta-button secondary" (click)="navigateTo('vision')">
+                    {{ currentLang === 'ar' ? 'تعرف علينا أكثر' : 'Learn More' }}
+                </button>
             </div>
         </div>
         <div class="hero-image">
-            <img src="assets/real-estate-development.svg" alt="تطوير عقاري">
+            <img src="https://i.pinimg.com/1200x/70/9c/85/709c850b624123f6f51bc658d3dc71c7.jpg" alt="تطوير عقاري">
         </div>
     </div>
 
     <!-- Features Section -->
     <div class="features-section">
-        <h2 class="section-title">نهجنا في التطوير العقاري</h2>
+        <h2 class="section-title">
+            {{ currentLang === 'ar' ? 'نهجنا في التطوير العقاري' : 'Our Real Estate Development Approach' }}
+        </h2>
         <div class="features-grid">
             <div class="feature-card" *ngFor="let feature of features">
-                <mat-icon class="feature-icon">{{feature.icon}}</mat-icon>
-                <h3>{{currentLang === 'ar' ? feature.title.ar : feature.title.en}}</h3>
-                <p>{{currentLang === 'ar' ? feature.description.ar : feature.description.en}}</p>
+                <div class="card-icon-wrapper">
+                    <mat-icon class="feature-icon">{{feature.icon}}</mat-icon>
+                </div>
+                <h3 class="feature-title">{{currentLang === 'ar' ? feature.title.ar : feature.title.en}}</h3>
+                <p class="feature-description">{{currentLang === 'ar' ? feature.description.ar :
+                    feature.description.en}}
+                </p>
             </div>
         </div>
     </div>
 
     <!-- Technologies Section (يمكنك تسميتها "التقنيات والأساليب" أو ازالة) -->
-    <div class="tech-section">
+    <!-- <div class="tech-section">
         <h2 class="section-title">أدوات وتقنيات البناء الحديثة</h2>
         <div class="tech-tabs">
             <button *ngFor="let tech of technologies" [class.active]="tech === activeTech" (click)="activeTech = tech">
@@ -48,7 +58,7 @@
                 <img [src]="'assets/tech-' + activeTech.toLowerCase() + '.png'" [alt]="activeTech + ' logo'">
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Stats Section -->
     <div class="stats-section">
@@ -59,7 +69,7 @@
     </div>
 
     <!-- Team Section -->
-    <div class="team-section">
+    <!-- <div class="team-section">
         <h2 class="section-title">فريقنا المتميز</h2>
         <div class="team-grid">
             <div class="team-card" *ngFor="let member of team">
@@ -78,12 +88,20 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <!-- CTA Section -->
     <div class="cta-section">
-        <h2>هل أنت جاهز لتطوير مشروعك العقاري؟</h2>
-        <p>دعنا نبني مستقبلًا أفضل معًا</p>
-        <button class="cta-button">تواصل معنا</button>
+        <div class="cta-container">
+            <h2 class="cta-title">
+                {{ currentLang === 'ar' ? 'هل أنت جاهز لتطوير مشروعك العقاري؟' : 'Ready to Develop Your Real Estate
+                Project?' }}
+            </h2>
+            <p class="cta-subtitle">
+                {{ currentLang === 'ar' ? 'دعنا نبني مستقبلًا أفضل معًا' : 'Let us build a better future together' }}
+            </p>
+            <button class="cta-button" (click)="navigateTo('contact')">
+                {{ currentLang === 'ar' ? 'تواصل معنا' : 'Contact Us' }}
+            </button>
+        </div>
     </div>
 </section>
